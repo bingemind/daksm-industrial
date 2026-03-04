@@ -1,0 +1,10 @@
+/* Tailwind CLI source file — compiled to css/styles.css by `npm run build`.
+   For CDN-based development, index.html loads css/custom.css directly.    */
+
+@tailwind base;
+@tailwind components;
+
+/* Import our design tokens and custom component styles */
+@import './custom.css';
+
+@tailwind utilities;

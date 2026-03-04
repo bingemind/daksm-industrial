@@ -1,0 +1,14 @@
+{
+  "name": "daksm-engineering",
+  "version": "1.0.0",
+  "description": "DAKSM Engineering Industries — Premium Industrial Website",
+  "scripts": {
+    "dev":   "npx tailwindcss -i ./css/input.css -o ./css/styles.css --watch",
+    "build": "npx tailwindcss -i ./css/input.css -o ./css/styles.css --minify"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss":      "^8.4.47",
+    "tailwindcss":  "^3.4.14"
+  }
+}

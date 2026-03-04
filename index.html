@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<!--
+  DAKSM Engineering Industries Pvt Ltd
+  ─────────────────────────────────────────────────────────────────
+  Stack    : Pure HTML5 · Tailwind CSS (CDN) · Vanilla JavaScript
+  Themes   : "Precision" (Light, Tech Blue) | "Powerhouse" (Dark, Safety Orange)
+  Authors  : Lead Frontend — Build Sprint 1
+  ─────────────────────────────────────────────────────────────────
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <meta name="description"
+    content="DAKSM Engineering Industries Pvt Ltd — Premium industrial valve solutions for oil & gas,
+             petrochemical, and power generation. ISO 9001:2015 Certified. API 6D Compliant." />
+  <meta name="keywords"
+    content="industrial valves, ball valve, gate valve, globe valve, DAKSM, engineering,
+             API 6D, ISO 9001, petrochemical, oil gas" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="DAKSM Engineering Industries Pvt Ltd | Precision Valve Solutions" />
+  <meta property="og:description" content="Premium industrial valve solutions engineered for performance." />
+  <meta property="og:image"       content="/public/images/valve-precision-light.jpeg" />
+
+  <title>DAKSM Engineering Industries Pvt Ltd | Precision Valve Solutions</title>
+
+  <!-- Favicon: inline SVG for zero HTTP request -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>
+      <rect width='32' height='32' rx='6' fill='%230056B3'/>
+      <path d='M8 10h16M8 16h16M8 22h16' stroke='white' stroke-width='2.5'
+            stroke-linecap='round'/>
+    </svg>" />
+
+  <!-- Google Fonts — Inter (body) + Montserrat (display/headings) + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?
+    family=Inter:wght@300;400;500;600;700&
+    family=Montserrat:wght@600;700;800;900&
+    family=JetBrains+Mono:wght@400;500&
+    display=swap" rel="stylesheet" />
+
+  <!-- ── Tailwind CDN config must be defined BEFORE the CDN script loads ── -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',   // Dark mode toggled by adding .dark to <html>
+      theme: {
+        extend: {
+          // Map Tailwind colour utilities to our CSS custom properties.
+          // bg-accent, text-accent, border-accent etc. all respect the theme.
+          colors: {
+            accent:              'var(--color-accent)',
+            'accent-hover':      'var(--color-accent-hover)',
+            surface:             'var(--color-bg-primary)',
+            'surface-secondary': 'var(--color-bg-secondary)',
+            'surface-tertiary':  'var(--color-bg-tertiary)',
+            content:             'var(--color-text-primary)',
+            'content-secondary': 'var(--color-text-secondary)',
+            muted:               'var(--color-text-muted)',
+            border:              'var(--color-border)',
+          },
+          fontFamily: {
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Montserrat', 'system-ui', 'sans-serif'],
+            mono:    ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom design tokens + component styles (overrides Tailwind where needed) -->
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+
+<body class="font-sans antialiased bg-surface text-content">
+
+  <!-- ============================================================
+       NAVIGATION
+       Fixed glassmorphism bar. Scrolled state handled by app.js.
+       ============================================================ -->
+  <nav id="navbar"
+       class="fixed top-0 left-0 right-0 z-50"
+       aria-label="Main navigation">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+
+        <!-- ── Logo ── -->
+        <a href="#"
+           class="flex items-center gap-3 group shrink-0"
+           aria-label="DAKSM Engineering Industries Pvt Ltd — home">
+          <!-- Logomark: layered hexagon / valve wheel icon -->
+          <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center
+                      shadow-md transition-transform duration-300 group-hover:scale-105"
+               aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z"
+                    stroke="white" stroke-width="2" stroke-linejoin="round" fill="none"/>
+              <path d="M2 17L12 22L22 17"
+                    stroke="white" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12"
+                    stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="hidden sm:block leading-none">
+            <div class="font-display font-bold text-base text-content tracking-tight">
+              DAKSM
+            </div>
+            <div class="text-[11px] text-content-secondary tracking-wide mt-0.5">
+              Engineering Industries Pvt Ltd
+            </div>
+          </div>
+        </a>
+
+        <!-- ── Desktop nav links ── -->
+        <div class="hidden lg:flex items-center gap-7" role="menubar">
+          <a href="#products"       class="nav-link text-sm font-medium text-content-secondary"
+             role="menuitem">Products</a>
+          <!-- <a href="#calculator"     class="nav-link text-sm font-medium text-content-secondary"
+             role="menuitem">Calculator</a> -->
+          <a href="#about"          class="nav-link text-sm font-medium text-content-secondary"
+             role="menuitem">About</a>
+          <a href="#certifications" class="nav-link text-sm font-medium text-content-secondary"
+             role="menuitem">Certifications</a>
+          <a href="#contact"        class="nav-link text-sm font-medium text-content-secondary"
+             role="menuitem">Contact</a>
+        </div>
+
+        <!-- ── Right controls: theme toggle + CTA + hamburger ── -->
+        <div class="flex items-center gap-3">
+
+          <!-- Theme toggle pill -->
+          <div class="flex items-center gap-2" title="Toggle theme">
+            <!-- "Precision" label (light mode) -->
+            <span class="hidden sm:block text-xs font-mono text-muted select-none
+                         dark:hidden">
+              Precision
+            </span>
+
+            <button
+              id="theme-toggle"
+              type="button"
+              class="theme-toggle-btn focus:outline-none focus:ring-2
+                     focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface"
+              role="switch"
+              aria-checked="false"
+              aria-label="Toggle between Precision (light) and Powerhouse (dark) theme"
+            >
+              <span class="sr-only">Toggle theme</span>
+              <!-- Thumb with icon -->
+              <span class="theme-toggle-thumb">
+                <!-- Sun: shown in light mode -->
+                <svg class="theme-icon-sun" fill="currentColor" viewBox="0 0 20 20"
+                     aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0
+                       4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1
+                       1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0
+                       11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1
+                       1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05
+                       6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414
+                       8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4
+                       11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                </svg>
+                <!-- Moon: shown in dark mode -->
+                <svg class="theme-icon-moon" fill="currentColor" viewBox="0 0 20 20"
+                     aria-hidden="true">
+                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                </svg>
+              </span>
+            </button>
+
+            <!-- "Powerhouse" label (dark mode) -->
+            <span class="hidden sm:hidden dark:sm:block text-xs font-mono text-muted
+                         select-none">
+              Powerhouse
+            </span>
+          </div>
+
+          <!-- Primary CTA -->
+          <a href="#contact"
+             class="hidden sm:inline-flex items-center gap-2 btn-primary
+                    px-4 py-2 rounded-lg text-white text-sm font-semibold">
+            Get Quote
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+
+          <!-- Hamburger / close — mobile only -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="lg:hidden p-2 rounded-lg text-content-secondary
+                   hover:text-accent hover:bg-surface-secondary transition-colors"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <!-- Hamburger icon -->
+            <svg class="icon-menu w-6 h-6" fill="none" stroke="currentColor"
+                 viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <!-- Close icon (hidden by default) -->
+            <svg class="icon-close w-6 h-6 hidden" fill="none" stroke="currentColor"
+                 viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+
+      </div><!-- / flex row -->
+    </div><!-- / container -->
+
+    <!-- ── Mobile menu panel ── -->
+    <div
+      id="mobile-menu"
+      class="lg:hidden hidden border-t border-border bg-surface"
+      role="menu"
+      aria-label="Mobile navigation"
+    >
+      <div class="max-w-7xl mx-auto px-4 py-3 space-y-1">
+        <a href="#products"
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary
+                  hover:text-accent hover:bg-surface-secondary transition-colors"
+           role="menuitem">Products</a>
+        <!-- <a href="#calculator"
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary
+                  hover:text-accent hover:bg-surface-secondary transition-colors"
+           role="menuitem">Calculator</a> -->
+        <a href="#about"
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary
+                  hover:text-accent hover:bg-surface-secondary transition-colors"
+           role="menuitem">About</a>
+        <a href="#certifications"
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary
+                  hover:text-accent hover:bg-surface-secondary transition-colors"
+           role="menuitem">Certifications</a>
+        <a href="#contact"
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary
+                  hover:text-accent hover:bg-surface-secondary transition-colors"
+           role="menuitem">Contact</a>
+        <div class="pt-2 pb-1">
+          <a href="#contact"
+             class="btn-primary flex items-center justify-center gap-2 px-5 py-3
+                    rounded-xl text-white font-semibold text-sm">
+            Get Quote
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+  <!-- / NAVIGATION -->
+
+
+  <!-- ============================================================
+       HERO SECTION
+       Full-viewport. Background image swaps with theme via CSS var.
+       Text, overlays, and stats all theme-aware via CSS variables.
+       ============================================================ -->
+  <section
+    id="hero"
+    class="hero-section flex items-center overflow-hidden"
+    aria-label="DAKSM Engineering Industries Pvt Ltd — Hero"
+  >
+
+    <!-- Background: full-bleed image pulled from CSS var --hero-image-url -->
+    <div class="hero-bg absolute inset-0" aria-hidden="true"></div>
+
+    <!-- Gradient overlay — ensures text legibility over any image -->
+    <div class="hero-overlay absolute inset-0" aria-hidden="true"></div>
+
+    <!-- Decorative dot grid -->
+    <div class="hero-dot-grid absolute inset-0 opacity-100" aria-hidden="true"></div>
+
+    <!-- ── Hero content ── -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+                pt-28 pb-20 lg:pt-36 lg:pb-28">
+      <div class="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
+
+        <!-- ── LEFT: Text content ── -->
+        <div>
+
+        <!-- Eyebrow badge -->
+        <div class="will-animate inline-flex items-center gap-2.5 px-4 py-2 mb-8
+                    rounded-full border border-accent/30 bg-accent/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"
+                aria-hidden="true"></span>
+          <span class="text-xs font-semibold text-accent tracking-[0.15em] uppercase">
+            ISO 9001:2015 Certified &nbsp;·&nbsp; API 6D Compliant
+          </span>
+        </div>
+
+        <!-- Main headline -->
+        <h1 class="hero-headline font-display font-black leading-[0.92] mb-6">
+          <span class="will-animate block text-5xl sm:text-6xl lg:text-6xl xl:text-7xl
+                       text-content"
+                style="animation-delay: 0.10s">
+            Engineering
+          </span>
+          <span class="will-animate block text-5xl sm:text-6xl lg:text-6xl xl:text-7xl
+                       text-accent"
+                style="animation-delay: 0.20s">
+            Precision.
+          </span>
+          <span class="will-animate block text-5xl sm:text-6xl lg:text-6xl xl:text-7xl
+                       text-content"
+                style="animation-delay: 0.28s">
+            Built for
+          </span>
+          <span class="will-animate block text-5xl sm:text-6xl lg:text-6xl xl:text-7xl
+                       text-content"
+                style="animation-delay: 0.36s">
+            Industry.
+          </span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="will-animate text-lg sm:text-xl text-content-secondary max-w-xl
+                  leading-relaxed mb-10"
+           style="animation-delay: 0.48s">
+          Premium valve solutions engineered for the most demanding applications
+          in oil &amp; gas, petrochemical, and power generation.
+          Precision-machined. Rigorously tested. Globally certified.
+        </p>
+
+        <!-- CTA row -->
+        <div class="will-animate flex flex-col sm:flex-row sm:flex-wrap gap-4 mb-16"
+             style="animation-delay: 0.58s">
+          <a href="#products"
+             class="btn-primary group inline-flex items-center justify-center gap-3
+                    px-8 py-4 rounded-xl text-white font-bold text-base"
+             aria-label="Explore DAKSM product range">
+            Explore Products
+            <svg class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <!-- <a href="#calculator"
+             class="btn-outline group inline-flex items-center justify-center gap-3
+                    px-8 py-4 rounded-xl font-bold text-base"
+             aria-label="Open valve specification calculator">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01
+                       M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            Valve Calculator
+          </a> -->
+          <!-- WhatsApp quick-chat CTA — replace XXXXXXXXXX with actual number -->
+          <a href="https://wa.me/9821031129?text=Hello%20DAKSM%2C%20I%27d%20like%20to%20enquire%20about%20your%20valve%20products."
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn-whatsapp group inline-flex items-center justify-center gap-3
+                    px-8 py-4 rounded-xl font-bold text-base"
+             aria-label="Chat with DAKSM on WhatsApp">
+            <!-- WhatsApp icon -->
+            <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"
+                 aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.940 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp Us
+          </a>
+        </div>
+
+        <!-- Stats row -->
+        <div class="will-animate flex flex-wrap gap-5 sm:gap-8"
+             style="animation-delay: 0.70s"
+             role="list"
+             aria-label="Company highlights">
+
+          <!-- Stat: Projects -->
+          <div class="flex items-center gap-3" role="listitem">
+            <div class="w-11 h-11 rounded-xl bg-accent/10 flex items-center
+                        justify-center shrink-0" aria-hidden="true">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor"
+                   viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0
+                     014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42
+                     3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946
+                     3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0
+                     01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138
+                     3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0
+                     00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="font-display font-black text-2xl text-content leading-none">
+                500<span class="text-accent">+</span>
+              </div>
+              <div class="text-xs text-muted mt-0.5 leading-tight">Projects Delivered</div>
+            </div>
+          </div>
+
+          <!-- Stat: Experience -->
+          <div class="flex items-center gap-3" role="listitem">
+            <div class="w-11 h-11 rounded-xl bg-accent/10 flex items-center
+                        justify-center shrink-0" aria-hidden="true">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor"
+                   viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="font-display font-black text-2xl text-content leading-none">
+                25<span class="text-accent">+</span>
+              </div>
+              <div class="text-xs text-muted mt-0.5 leading-tight">Years Experience</div>
+            </div>
+          </div>
+
+          <!-- Stat: Countries -->
+          <div class="flex items-center gap-3" role="listitem">
+            <div class="w-11 h-11 rounded-xl bg-accent/10 flex items-center
+                        justify-center shrink-0" aria-hidden="true">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor"
+                   viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5
+                     2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2
+                     2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="font-display font-black text-2xl text-content leading-none">
+                40<span class="text-accent">+</span>
+              </div>
+              <div class="text-xs text-muted mt-0.5 leading-tight">Countries Served</div>
+            </div>
+          </div>
+
+          <!-- Stat: Product lines -->
+          <div class="flex items-center gap-3" role="listitem">
+            <div class="w-11 h-11 rounded-xl bg-accent/10 flex items-center
+                        justify-center shrink-0" aria-hidden="true">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor"
+                   viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158
+                     a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0
+                     00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782
+                     0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="font-display font-black text-2xl text-content leading-none">
+                12<span class="text-accent">+</span>
+              </div>
+              <div class="text-xs text-muted mt-0.5 leading-tight">Product Lines</div>
+            </div>
+          </div>
+
+        </div><!-- / stats row -->
+
+        </div><!-- / LEFT column -->
+
+        <!-- ── RIGHT: Product showcase image ── -->
+        <div class="hidden lg:flex items-center justify-center will-animate"
+             style="animation-delay: 0.30s">
+          <div class="relative w-full max-w-lg">
+
+            <!-- Decorative rotated frame behind the image -->
+            <div class="absolute -inset-3 rounded-3xl border-2 border-accent/25 rotate-2"
+                 aria-hidden="true"></div>
+
+            <!-- Main product image -->
+            <img
+              src="public/images/hero2.png"
+              alt="Industrial valve — detailed engineering cross-section"
+              class="relative w-full rounded-2xl object-cover shadow-2xl -rotate-1
+                     transition-transform duration-500 hover:rotate-0 hover:scale-[1.02]"
+            />
+
+            <!-- Floating badge: Pressure Class -->
+            <div class="absolute -bottom-5 -left-5 px-4 py-3 rounded-xl
+                        bg-surface border border-border shadow-lg"
+                 aria-hidden="true">
+         <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-0.5">
+                Pressure Class
+              </div>
+         <div class="font-display font-black text-base text-content leading-none">
+                Up to Class <span class="text-accent">2500</span>
+              </div> 
+            </div>
+
+            <!-- Floating badge: API cert -->
+            <div class="absolute -top-5 -right-5 w-20 h-20 rounded-2xl bg-accent
+                        flex flex-col items-center justify-center shadow-xl"
+                 aria-hidden="true">
+              <span class="text-white font-display font-black text-lg leading-none">API</span>
+              <span class="text-white/75 font-mono text-xs mt-0.5">6D</span>
+            </div>
+
+            <!-- Floating badge: NPS range -->
+            <!-- <div class="absolute top-4 -left-6 px-3 py-2 rounded-lg
+                        bg-surface border border-border shadow-md"
+                 aria-hidden="true">
+              <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-0.5">
+                NPS Range
+              </div>
+              <div class="font-display font-bold text-sm text-content leading-none">
+                ½" – <span class="text-accent">24"</span>
+              </div>
+            </div> -->
+
+          </div>
+        </div><!-- / RIGHT column -->
+
+      </div><!-- / two-column grid -->
+    </div><!-- / container -->
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center
+                gap-1.5 text-content-secondary animate-bounce"
+         aria-hidden="true">
+      <span class="text-[10px] font-mono tracking-[0.2em] uppercase">Scroll</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+
+  </section>
+  <!-- / HERO SECTION -->
+
+
+  <!-- ============================================================
+       PRODUCTS SECTION
+       Cards are rendered by renderProducts() in app.js,
+       which reads from PRODUCT_DATA in config.js.
+       ============================================================ -->
+  <section id="products" class="py-24 lg:py-32 bg-surface-secondary"
+           aria-labelledby="products-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-2xl mb-14">
+        <p class="will-animate font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
+          Product Range
+        </p>
+        <h2 id="products-heading"
+            class="will-animate font-display font-black text-4xl sm:text-5xl text-content
+                   leading-tight mb-4">
+          Valves Built for<br/>
+          <span class="text-accent">Extreme Conditions</span>
+        </h2>
+        <p class="will-animate text-base text-content-secondary leading-relaxed">
+          Every valve is designed to exceed ASME, API, and ISO standards — from
+          cryogenic service to high-temperature, high-pressure applications.
+        </p>
+      </div>
+
+      <!-- Product cards — rendered by app.js → renderProducts() -->
+      <div id="products-grid"
+           class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+           aria-label="Product list">
+        <!-- Populated by renderProducts() in app.js -->
+      </div>
+
+    </div>
+  </section>
+  <!-- / PRODUCTS SECTION -->
+
+
+  <!-- ============================================================
+       VALVE CALCULATOR SECTION
+       The form and results are rendered by Calculator.init() in calculator.js.
+       ============================================================ -->
+
+  <!-- / VALVE CALCULATOR SECTION -->
+
+
+  <!-- ============================================================
+       ABOUT SECTION — Sprint 2
+       ============================================================ -->
+  <section id="about" class="py-24 bg-surface-secondary" aria-labelledby="about-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
+          About Us
+        </p>
+        <h2 id="about-heading"
+            class="font-display font-black text-4xl text-content mb-6">
+          About DAKSM Engineering
+        </h2>
+      </div>
+      <!-- About content — next sprint -->
+      <p class="font-mono text-xs text-muted border border-border-subtle rounded-lg
+                px-4 py-3 inline-block">
+        // Full about section — Sprint 2
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CERTIFICATIONS SECTION — Sprint 2
+       ============================================================ -->
+  <section id="certifications" class="py-24 bg-surface"
+           aria-labelledby="certifications-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
+          Standards &amp; Compliance
+        </p>
+        <h2 id="certifications-heading"
+            class="font-display font-black text-4xl text-content mb-6">
+          Certifications
+        </h2>
+      </div>
+      <p class="font-mono text-xs text-muted border border-border-subtle rounded-lg
+                px-4 py-3 inline-block">
+        // Certifications &amp; standards grid — Sprint 2
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT SECTION
+       Two-card CTA layout: WhatsApp (primary) + Email (secondary).
+       Sprint 2 will add a full enquiry form below these cards.
+       ============================================================ -->
+  <section id="contact" class="py-24 lg:py-32 bg-surface-secondary"
+           aria-labelledby="contact-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-2xl mb-14">
+        <p class="will-animate font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
+          Get in Touch
+        </p>
+        <h2 id="contact-heading"
+            class="will-animate font-display font-black text-4xl sm:text-5xl text-content
+                   leading-tight mb-4">
+          Let's Talk<br/>
+          <span class="text-accent">Business</span>
+        </h2>
+        <p class="will-animate text-base text-content-secondary leading-relaxed">
+          Reach out for specifications, bulk pricing, or custom valve engineering.
+          Our team responds within 2 business hours.
+        </p>
+      </div>
+
+      <!-- CTA card grid -->
+      <div class="grid sm:grid-cols-2 gap-6 max-w-3xl">
+
+        <!-- ── WhatsApp Card ── -->
+        <div class="will-animate contact-cta-card card-whatsapp">
+          <!-- Icon halo -->
+          <div class="contact-card-icon icon-whatsapp" aria-hidden="true">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.940 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
+
+          <!-- Card body -->
+          <div>
+            <h3 class="font-display font-bold text-xl text-content mb-1">
+              Chat on WhatsApp
+            </h3>
+            <p class="text-sm text-content-secondary leading-relaxed">
+              Fastest response. Share drawings, specs, or simply ask a question.
+              We're available Mon–Sat, 9 AM – 7 PM IST.
+            </p>
+          </div>
+
+          <!-- CTA button -->
+          <!-- REPLACE 91XXXXXXXXXX with the actual WhatsApp number (country code + number, no spaces/dashes) -->
+          <a href="https://wa.me/9821031129?text=Hello%20DAKSM%2C%20I%27d%20like%20to%20enquire%20about%20your%20industrial%20valve%20products."
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn-whatsapp inline-flex items-center justify-center gap-2.5
+                    px-6 py-3.5 rounded-xl font-semibold text-sm w-full sm:w-auto"
+             aria-label="Open WhatsApp chat with DAKSM Engineering">
+            <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"
+                 aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.940 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Start WhatsApp Chat
+          </a>
+        </div>
+
+        <!-- ── Email Card ── -->
+        <div class="will-animate contact-cta-card card-email" style="animation-delay: 0.12s">
+          <!-- Icon halo -->
+          <div class="contact-card-icon icon-email" aria-hidden="true">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0
+                       00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+
+          <!-- Card body -->
+          <div>
+            <h3 class="font-display font-bold text-xl text-content mb-1">
+              Send an Email
+            </h3>
+            <p class="text-sm text-content-secondary leading-relaxed">
+              For formal RFQs, technical datasheets, and purchase orders.
+              We respond to every email within 24 hours.
+            </p>
+          </div>
+
+          <!-- CTA — opens default mail client pre-filled -->
+          <a href="mailto:daskmindustries@gmail.com?subject=Enquiry%20—%20DAKSM%20Valve%20Products&body=Hello%20DAKSM%20Team%2C%0A%0AI%20would%20like%20to%20enquire%20about%3A%0A%0A"
+             class="btn-primary inline-flex items-center justify-center gap-2.5
+                    px-6 py-3.5 rounded-xl text-white font-semibold text-sm w-full sm:w-auto"
+             aria-label="Email DAKSM Engineering at daskmindustries@gmail.com">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor"
+                 viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0
+                       00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            daskmindustries@gmail.com
+          </a>
+        </div>
+
+      </div><!-- / card grid -->
+
+      <!-- Sprint 2 placeholder: full enquiry form goes below -->
+      <p class="font-mono text-xs text-muted border border-border-subtle rounded-lg
+                px-4 py-3 inline-block mt-12">
+        // Full enquiry form — Sprint 2
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER — minimal, Sprint 2 will expand
+       ============================================================ -->
+  <footer class="py-8 bg-surface border-t border-border" aria-label="Footer">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row
+                items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg bg-accent flex items-center justify-center"
+             aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z"
+                  stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2"
+                  stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2"
+                  stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="font-display font-bold text-sm text-content">DAKSM Engineering Industries Pvt Ltd</span>
+      </div>
+      <p class="text-xs text-muted text-center sm:text-right">
+        &copy; <span id="footer-year"></span> DAKSM Engineering Industries Pvt Ltd.
+        All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       WHATSAPP FLOATING ACTION BUTTON
+       Always visible. Icon-only at rest; expands to pill on hover.
+       Fires a 3× pulse animation on page load to draw attention.
+       REPLACE 91XXXXXXXXXX with actual WhatsApp number before go-live.
+       ============================================================ -->
+  <a id="whatsapp-fab"
+     href="https://wa.me/9821031129?text=Hello%20DAKSM%2C%20I%27d%20like%20to%20enquire%20about%20your%20industrial%20valve%20products."
+     target="_blank"
+     rel="noopener noreferrer"
+     class="whatsapp-fab"
+     aria-label="Chat with DAKSM on WhatsApp"
+     title="Chat with us on WhatsApp">
+
+    <!-- Icon — always visible -->
+    <span class="whatsapp-fab-icon" aria-hidden="true">
+      <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.940 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </span>
+
+    <!-- Label — slides in on hover -->
+    <span class="whatsapp-fab-label">Chat with us</span>
+  </a>
+
+
+  <!-- ============================================================
+       SCRIPTS
+       Load order matters: config → app → calculator
+       ============================================================ -->
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/calculator.js"></script>
+
+  <!-- Inline: footer year (avoids a DOM query in app.js) -->
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
