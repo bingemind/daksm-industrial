@@ -203,7 +203,7 @@ const renderProducts = () => {
   const grid = document.getElementById('products-grid');
   if (!grid || typeof PRODUCT_DATA === 'undefined') return;
 
-  grid.innerHTML = PRODUCT_DATA.map((product) => `
+  grid.innerHTML = PRODUCT_DATA.slice(0, 3).map((product) => `
     <article
       class="product-card group relative flex flex-col rounded-2xl overflow-hidden
              border border-border bg-surface hover:shadow-lg transition-all duration-300
@@ -251,47 +251,19 @@ const renderProducts = () => {
         <h3 class="font-display font-bold text-xl text-content mb-1">
           ${product.name}
         </h3>
-        <p class="text-xs font-mono text-muted mb-3">${product.series}</p>
 
         <!-- Description -->
         <p class="text-sm text-content-secondary leading-relaxed mb-5 flex-1">
           ${product.description}
         </p>
-
-        <!-- Key specs summary -->
-        <div class="grid grid-cols-2 gap-3 mb-5 p-4 rounded-xl bg-surface-secondary text-xs">
-          <div>
-            <div class="text-muted mb-1">Size Range</div>
-            <div class="font-medium text-content">
-              ${product.specs.sizes[0]} – ${product.specs.sizes[product.specs.sizes.length - 1]}
-            </div>
-          </div>
-          <div>
-            <div class="text-muted mb-1">Pressure Class</div>
-            <div class="font-medium text-content">
-              ${product.specs.classes[0]} – ${product.specs.classes[product.specs.classes.length - 1]}
-            </div>
-          </div>
-        </div>
-
-        <!-- Standards badges -->
-        <div class="flex flex-wrap gap-2 mb-5">
-          ${product.standards.map((s) => `
-            <span class="px-2 py-0.5 rounded-md text-xs font-mono border border-border
-                         text-content-secondary bg-surface-tertiary">
-              ${s}
-            </span>
-          `).join('')}
-        </div>
-
         <!-- CTA -->
         <a
-          href="#contact"
+          href="products/detail.html?id=${product.id}"
           class="btn-primary inline-flex items-center justify-center gap-2 w-full
                  px-5 py-3 rounded-xl text-white font-semibold text-sm"
-          aria-label="Request quote for ${product.name}"
+          aria-label="View details for ${product.name}"
         >
-          Request Quote
+          View Details
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
           </svg>

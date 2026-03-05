@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | DAKSM Engineering Industries Pvt Ltd</title>
+  <meta name="description" content="Photo gallery of DAKSM Engineering Industries — industrial valve manufacturing, testing facilities, and plant operations." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230056B3'/><path d='M8 10h16M8 16h16M8 22h16' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind = { config: {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: {
+          accent: 'var(--color-accent)', 'accent-hover': 'var(--color-accent-hover)',
+          surface: 'var(--color-bg-primary)', 'surface-secondary': 'var(--color-bg-secondary)',
+          'surface-tertiary': 'var(--color-bg-tertiary)',
+          content: 'var(--color-text-primary)', 'content-secondary': 'var(--color-text-secondary)',
+          muted: 'var(--color-text-muted)', border: 'var(--color-border)',
+        },
+        fontFamily: {
+          sans: ['Inter','system-ui','sans-serif'],
+          display: ['Montserrat','system-ui','sans-serif'],
+          mono: ['JetBrains Mono','monospace'],
+        },
+      }},
+    }};
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/custom.css" />
+</head>
+<body class="font-sans antialiased bg-surface text-content">
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+
+      <!-- Logo -->
+      <a href="../index.html" class="flex items-center gap-3 group shrink-0" aria-label="DAKSM home">
+        <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-105" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round" fill="none"/>
+            <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="hidden sm:block leading-none">
+          <div class="font-display font-bold text-base text-content tracking-tight">DAKSM</div>
+          <div class="text-[11px] text-content-secondary tracking-wide mt-0.5">Engineering Industries Pvt Ltd</div>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden lg:flex items-center gap-7" role="menubar">
+        <a href="../products/index.html" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Products</a>
+        <a href="../index.html#about" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">About</a>
+        <a href="../index.html#certifications" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Quality</a>
+        <a href="index.html" class="nav-link is-active text-sm font-medium" role="menuitem">Gallery</a>
+        <a href="../index.html#contact" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Contact</a>
+      </div>
+
+      <!-- Right controls -->
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" type="button" class="theme-toggle-btn" role="switch" aria-checked="false" aria-label="Toggle theme">
+          <span class="theme-toggle-thumb">
+            <svg class="theme-icon-sun" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <svg class="theme-icon-moon" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+          </span>
+        </button>
+        <a href="../index.html#contact" class="hidden sm:inline-flex items-center gap-2 btn-primary px-4 py-2 rounded-lg text-white text-sm font-semibold">
+          Get Quote
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 rounded-lg text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors" aria-label="Open menu" aria-expanded="false">
+          <svg class="icon-menu w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-border bg-surface">
+    <div class="max-w-7xl mx-auto px-4 py-3 space-y-1">
+      <a href="../products/index.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Products</a>
+      <a href="../index.html#about" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">About</a>
+      <a href="../index.html#certifications" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Certifications</a>
+      <a href="index.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-accent bg-surface-secondary">Gallery</a>
+      <a href="../index.html#contact" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Contact</a>
+      <div class="pt-2 pb-1">
+        <a href="../index.html#contact" class="btn-primary flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-white font-semibold text-sm">Get Quote</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- / NAVIGATION -->
+
+
+<!-- ============================================================
+     PAGE HEADER
+     ============================================================ -->
+<div class="pt-28 pb-12 bg-surface-secondary border-b border-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">Manufacturing &amp; Facilities</p>
+    <h1 class="font-display font-black text-4xl sm:text-5xl text-content leading-tight mb-3">
+      Our <span class="text-accent">Gallery</span>
+    </h1>
+    <p class="text-base text-content-secondary max-w-xl leading-relaxed">
+      A behind-the-scenes look at our state-of-the-art valve manufacturing
+      facilities, precision testing labs, and finished product range.
+    </p>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     GALLERY GRID
+     ============================================================ -->
+<main class="py-16 lg:py-20 bg-surface" id="gallery-main">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div id="gallery-grid"
+         class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
+         role="list"
+         aria-label="Gallery photographs">
+      <!-- Rendered by inline script below -->
+    </div>
+
+  </div>
+</main>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="py-10 bg-surface border-t border-border" aria-label="Footer">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg bg-accent flex items-center justify-center" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="font-display font-bold text-sm text-content">DAKSM Engineering Industries Pvt Ltd</span>
+      </div>
+      <nav class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted" aria-label="Footer navigation">
+        <a href="../products/index.html" class="hover:text-accent transition-colors">Products</a>
+        <a href="../index.html#about"    class="hover:text-accent transition-colors">About</a>
+        <a href="../index.html#certifications" class="hover:text-accent transition-colors">Certifications</a>
+        <a href="index.html"             class="hover:text-accent transition-colors">Gallery</a>
+        <a href="../index.html#contact"  class="hover:text-accent transition-colors">Contact</a>
+      </nav>
+      <p class="text-xs text-muted">
+        &copy; <span id="footer-year"></span> DAKSM Engineering Industries Pvt Ltd.
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     LIGHTBOX OVERLAY
+     ============================================================ -->
+<div id="lightbox"
+     class="gallery-lightbox"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Image lightbox"
+     aria-hidden="true">
+
+  <!-- Close button -->
+  <button class="gallery-lightbox-close" id="lb-close" aria-label="Close lightbox">
+    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <!-- Previous -->
+  <button class="gallery-lightbox-btn btn-prev" id="lb-prev" aria-label="Previous image">
+    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+    </svg>
+  </button>
+
+  <!-- Image -->
+  <img id="lb-img" src="" alt="" class="gallery-lightbox-img" />
+
+  <!-- Next -->
+  <button class="gallery-lightbox-btn btn-next" id="lb-next" aria-label="Next image">
+    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+
+  <!-- Counter -->
+  <div class="gallery-lightbox-counter" id="lb-counter" aria-live="polite"></div>
+</div>
+
+
+<!-- ============================================================
+     WHATSAPP FAB
+     ============================================================ -->
+<a id="whatsapp-fab"
+   href="https://wa.me/9821031129?text=Hello%20DAKSM%2C%20I%27d%20like%20to%20enquire%20about%20your%20industrial%20valve%20products."
+   target="_blank"
+   rel="noopener noreferrer"
+   class="whatsapp-fab"
+   aria-label="Chat with DAKSM on WhatsApp">
+  <span class="whatsapp-fab-icon" aria-hidden="true">
+    <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.940 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </span>
+  <span class="whatsapp-fab-label">Chat with us</span>
+</a>
+
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Theme ── */
+  var STORAGE_KEY = 'daksm-theme';
+  var html = document.documentElement;
+  var saved = localStorage.getItem(STORAGE_KEY);
+  var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  var theme = saved || system;
+  if (theme === 'dark') { html.classList.add('dark'); }
+  var btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+    btn.addEventListener('click', function () {
+      var isDark = html.classList.toggle('dark');
+      var next = isDark ? 'dark' : 'light';
+      localStorage.setItem(STORAGE_KEY, next);
+      btn.setAttribute('aria-checked', isDark ? 'true' : 'false');
+    });
+  }
+
+  /* ── Navbar scroll ── */
+  var navbar = document.getElementById('navbar');
+  if (navbar) {
+    window.addEventListener('scroll', function () {
+      navbar.classList.toggle('is-scrolled', window.scrollY > 60);
+    }, { passive: true });
+  }
+
+  /* ── Mobile menu ── */
+  var menuBtn = document.getElementById('mobile-menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function () {
+      var isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      var iconMenu = menuBtn.querySelector('.icon-menu');
+      var iconClose = menuBtn.querySelector('.icon-close');
+      if (iconMenu && iconClose) {
+        iconMenu.classList.toggle('hidden', !isOpen);
+        iconClose.classList.toggle('hidden', isOpen);
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* ── Footer year ── */
+  var fyEl = document.getElementById('footer-year');
+  if (fyEl) { fyEl.textContent = new Date().getFullYear(); }
+
+  /* ── Gallery data ── */
+  var TOTAL = 21;
+  var IMAGES = [];
+  for (var i = 1; i <= TOTAL; i++) {
+    var n = i < 10 ? '0' + i : '' + i;
+    IMAGES.push({
+      src: '../public/images/gallery/gallery-' + n + '.jpg',
+      alt: 'DAKSM Engineering — industrial valve manufacturing photograph ' + i,
+    });
+  }
+
+  /* ── Render thumbnails ── */
+  var grid = document.getElementById('gallery-grid');
+  if (grid) {
+    IMAGES.forEach(function (img, idx) {
+      var cell = document.createElement('div');
+      cell.className = 'gallery-thumb';
+      cell.setAttribute('role', 'listitem');
+      cell.setAttribute('tabindex', '0');
+      cell.setAttribute('aria-label', 'View photo ' + (idx + 1) + ' of ' + TOTAL);
+
+      var imgEl = document.createElement('img');
+      imgEl.src = img.src;
+      imgEl.alt = img.alt;
+      imgEl.loading = 'lazy';
+
+      var iconEl = document.createElement('div');
+      iconEl.className = 'gallery-thumb-icon';
+      iconEl.innerHTML = '<svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>';
+
+      cell.appendChild(imgEl);
+      cell.appendChild(iconEl);
+      grid.appendChild(cell);
+
+      function openAt(index) { openLightbox(index); }
+      cell.addEventListener('click', openAt.bind(null, idx));
+      cell.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(idx); }
+      });
+    });
+  }
+
+  /* ── Lightbox ── */
+  var lightbox  = document.getElementById('lightbox');
+  var lbImg     = document.getElementById('lb-img');
+  var lbCounter = document.getElementById('lb-counter');
+  var lbClose   = document.getElementById('lb-close');
+  var lbPrev    = document.getElementById('lb-prev');
+  var lbNext    = document.getElementById('lb-next');
+  var current   = 0;
+  var previouslyFocused = null;
+
+  function openLightbox(index) {
+    current = index;
+    previouslyFocused = document.activeElement;
+    showImage();
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (previouslyFocused) { previouslyFocused.focus(); }
+  }
+
+  function showImage() {
+    lbImg.style.opacity = '0';
+    lbImg.src = IMAGES[current].src;
+    lbImg.alt = IMAGES[current].alt;
+    lbCounter.textContent = (current + 1) + ' / ' + TOTAL;
+    lbImg.onload = function () { lbImg.style.opacity = '1'; };
+  }
+
+  function prev() { current = (current - 1 + TOTAL) % TOTAL; showImage(); }
+  function next() { current = (current + 1) % TOTAL; showImage(); }
+
+  if (lbClose) { lbClose.addEventListener('click', closeLightbox); }
+  if (lbPrev)  { lbPrev.addEventListener('click', prev); }
+  if (lbNext)  { lbNext.addEventListener('click', next); }
+
+  /* Backdrop click */
+  if (lightbox) {
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) { closeLightbox(); }
+    });
+  }
+
+  /* Keyboard navigation */
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) { return; }
+    if (e.key === 'Escape')      { closeLightbox(); }
+    else if (e.key === 'ArrowLeft')  { prev(); }
+    else if (e.key === 'ArrowRight') { next(); }
+  });
+
+}());
+</script>
+
+</body>
+</html>
