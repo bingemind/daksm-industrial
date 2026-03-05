@@ -317,6 +317,32 @@ body {
   transition: background var(--transition-slow);
 }
 
+/* Mobile: cover the full hero but reduce overlay opacity so the image shows */
+@media (max-width: 767px) {
+  .hero-bg {
+    background-position: center center;
+    background-size: auto;
+  }
+
+  :root .hero-overlay {
+    background: linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(255, 255, 255, 0.68) 50%,
+      rgba(255, 255, 255, 0.45) 100%
+    ) !important;
+  }
+
+  .dark .hero-overlay {
+    background: linear-gradient(
+      105deg,
+      rgba(13, 17, 23, 0.80) 0%,
+      rgba(13, 17, 23, 0.65) 50%,
+      rgba(13, 17, 23, 0.42) 100%
+    ) !important;
+  }
+}
+
 /* Subtle text shadow helps readability in dark mode where overlay thins */
 .hero-headline {
   text-shadow: var(--hero-text-shadow);
