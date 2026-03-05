@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Industrial Valves &amp; Sealing Products | DASKM Engineering Industries</title>
+  <meta name="description" content="11 product lines — ball valves, gate valves, butterfly valves, globe valves, strainers, industrial gaskets, and more. ISO 9001:2015 certified." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230056B3'/><path d='M8 10h16M8 16h16M8 22h16' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind = { config: {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: {
+          accent: 'var(--color-accent)', 'accent-hover': 'var(--color-accent-hover)',
+          surface: 'var(--color-bg-primary)', 'surface-secondary': 'var(--color-bg-secondary)',
+          'surface-tertiary': 'var(--color-bg-tertiary)',
+          content: 'var(--color-text-primary)', 'content-secondary': 'var(--color-text-secondary)',
+          muted: 'var(--color-text-muted)', border: 'var(--color-border)',
+        },
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','system-ui','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+      }},
+    }};
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/custom.css" />
+  <style>
+    .filter-btn { border: 2px solid var(--color-border); color: var(--color-text-secondary); background: var(--color-bg-primary); }
+    .filter-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .filter-btn.is-active { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+  </style>
+</head>
+<body class="font-sans antialiased bg-surface text-content">
+
+<!-- NAV -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="../index.html" class="flex items-center gap-3 group shrink-0" aria-label="DAKSM home">
+        <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-105" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round" fill="none"/><path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="hidden sm:block leading-none">
+          <div class="font-display font-bold text-base text-content tracking-tight">DAKSM</div>
+          <div class="text-[11px] text-content-secondary tracking-wide mt-0.5">Engineering Industries Pvt Ltd</div>
+        </div>
+      </a>
+      <div class="hidden lg:flex items-center gap-7" role="menubar">
+        <a href="index.html" class="nav-link is-active text-sm font-medium" role="menuitem">Products</a>
+        <a href="../index.html#about" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">About</a>
+        <a href="../index.html#certifications" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Certifications</a>
+        <a href="../gallery/index.html" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Gallery</a>
+        <a href="../index.html#contact" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" type="button" class="theme-toggle-btn" role="switch" aria-checked="false" aria-label="Toggle theme">
+          <span class="theme-toggle-thumb">
+            <svg class="theme-icon-sun" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <svg class="theme-icon-moon" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+          </span>
+        </button>
+        <a href="../index.html#contact" class="hidden sm:inline-flex items-center gap-2 btn-primary px-4 py-2 rounded-lg text-white text-sm font-semibold">
+          Get Quote <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 rounded-lg text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors" aria-label="Open menu" aria-expanded="false">
+          <svg class="icon-menu w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-border bg-surface">
+    <div class="max-w-7xl mx-auto px-4 py-3 space-y-1">
+      <a href="index.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-accent bg-surface-secondary">Products</a>
+      <a href="../index.html#about" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">About</a>
+      <a href="../index.html#certifications" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Certifications</a>
+      <a href="../gallery/index.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Gallery</a>
+      <a href="../index.html#contact" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Contact</a>
+      <div class="pt-2 pb-1"><a href="../index.html#contact" class="btn-primary flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-white font-semibold text-sm">Get Quote</a></div>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="pt-32 pb-12 bg-surface-secondary border-b border-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center gap-2 text-xs font-mono text-muted mb-8" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-accent transition-colors">Home</a>
+      <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      <span class="text-content" aria-current="page">Products</span>
+    </nav>
+    <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">Product Range</p>
+    <h1 class="font-display font-black text-4xl sm:text-5xl text-content leading-tight mb-4">Our Product Range</h1>
+    <p class="text-base text-content-secondary leading-relaxed max-w-2xl mb-8">
+      11 product lines engineered for oil &amp; gas, petrochemical, power generation, and industrial process applications.
+    </p>
+    <a href="../public/downloads/daskm-product-catalogue.pdf" target="_blank" rel="noopener noreferrer"
+       class="btn-outline inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      Download Full Catalogue (PDF)
+    </a>
+  </div>
+</section>
+
+<!-- PRODUCTS GRID -->
+<main class="py-16 lg:py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-3 mb-10" role="group" aria-label="Filter by category">
+      <button class="filter-btn is-active px-5 py-2 rounded-full text-sm font-semibold transition-all" data-filter="all" aria-pressed="true">All Products <span class="ml-1 text-xs opacity-70">11</span></button>
+      <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-filter="Industrial Valves" aria-pressed="false">Industrial Valves <span class="ml-1 text-xs opacity-70">8</span></button>
+      <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-filter="Sealing Solutions" aria-pressed="false">Sealing Solutions <span class="ml-1 text-xs opacity-70">3</span></button>
+    </div>
+    <div id="products-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" aria-label="Product list"></div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="py-8 bg-surface border-t border-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-7 h-7 rounded-lg bg-accent flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round"/></svg></div>
+      <span class="font-display font-bold text-sm text-content">DAKSM Engineering Industries Pvt Ltd</span>
+    </div>
+    <p class="text-xs text-muted">&copy; <span id="footer-year"></span> DAKSM Engineering Industries Pvt Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/9821031129?text=Hello%20DAKSM%2C%20I%27d%20like%20to%20enquire%20about%20your%20industrial%20valve%20products." target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="Chat on WhatsApp">
+  <span class="whatsapp-fab-icon"><svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.940 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
+  <span class="whatsapp-fab-label">Chat with us</span>
+</a>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Inline product data ── */
+  var PRODUCTS = [
+    { id: 'ball-valve', name: 'Ball Valve', category: 'Industrial Valves', highlight: 'Zero leakage shut-off', image: '../public/images/products/ball-valve.png' },
+    { id: 'butterfly-valve', name: 'Butterfly Valve', category: 'Industrial Valves', highlight: 'Low pressure drop design', image: '../public/images/products/butterfly-valve.jpg' },
+    { id: 'gate-valve', name: 'Gate Valve', category: 'Industrial Valves', highlight: 'Full bore, minimal restriction', image: '../public/images/products/gate-valve.jpg' },
+    { id: 'globe-valve', name: 'Globe Valve', category: 'Industrial Valves', highlight: 'Superior throttling control', image: '../public/images/products/globe-valve.jpg' },
+    { id: 'non-return-valve', name: 'Non Return Valve', category: 'Industrial Valves', highlight: 'Automatic backflow prevention', image: '../public/images/products/non-return-valve.png' },
+    { id: 'diaphragm-valve', name: 'Diaphragm Valve', category: 'Industrial Valves', highlight: 'Zero body-fluid contact', image: '../public/images/products/diaphragm-valve.jpg' },
+    { id: 'plug-valve', name: 'Plug Valve', category: 'Industrial Valves', highlight: 'Quarter-turn operation', image: '../public/images/products/plug-valve.png' },
+    { id: 'strainer', name: 'Strainer', category: 'Industrial Valves', highlight: 'Interchangeable screen elements', image: '../public/images/products/strainer.png' },
+    { id: 'industrial-gaskets', name: 'Industrial Gaskets', category: 'Sealing Solutions', highlight: 'Full range of flange standards', image: '../public/images/products/industrial-gaskets.png' },
+    { id: 'gland-packings', name: 'Non-Asbestos Braided Gland Packings', category: 'Sealing Solutions', highlight: 'Non-asbestos, environmentally safe', image: '../public/images/products/gland-packings.png' },
+    { id: 'cold-welding-compound', name: 'Cold Welding Compound', category: 'Sealing Solutions', highlight: 'No hot work permit required', image: '../public/images/products/cold-welding-compound.jpg' }
+  ];
+
+  /* ── Theme ── */
+  var html = document.documentElement;
+  var saved = localStorage.getItem('daksm-theme');
+  var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  if ((saved || system) === 'dark') html.classList.add('dark');
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var dark = html.classList.toggle('dark');
+    localStorage.setItem('daksm-theme', dark ? 'dark' : 'light');
+    document.getElementById('theme-toggle').setAttribute('aria-checked', dark ? 'true' : 'false');
+  });
+
+  /* ── Navbar scroll ── */
+  window.addEventListener('scroll', function () {
+    document.getElementById('navbar').classList.toggle('is-scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── Mobile menu ── */
+  var menuBtn = document.getElementById('mobile-menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', function () {
+    var hidden = mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', !hidden);
+    menuBtn.querySelector('.icon-menu').classList.toggle('hidden', !hidden);
+    menuBtn.querySelector('.icon-close').classList.toggle('hidden', hidden);
+  });
+
+  /* ── Footer year ── */
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  /* ── Render a single product card ── */
+  function renderCard(p, index) {
+    var article = document.createElement('article');
+    article.className = 'product-card group relative flex flex-col rounded-2xl overflow-hidden border border-border bg-surface hover:shadow-lg transition-all duration-300 hover:-translate-y-1';
+    article.setAttribute('data-category', p.category);
+
+    var imgDiv = document.createElement('div');
+    imgDiv.className = 'relative h-52 bg-surface-secondary overflow-hidden';
+
+    var img = document.createElement('img');
+    img.src = p.image;
+    img.alt = p.name;
+    img.className = 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-105';
+    img.loading = index < 3 ? 'eager' : 'lazy';
+    img.width = 480;
+    img.height = 208;
+    imgDiv.appendChild(img);
+
+    var body = document.createElement('div');
+    body.className = 'flex flex-col flex-1 p-6';
+
+    var cat = document.createElement('span');
+    cat.className = 'inline-block mb-2 text-xs font-medium tracking-widest uppercase text-accent';
+    cat.textContent = p.category;
+
+    var title = document.createElement('h2');
+    title.className = 'font-display font-bold text-xl text-content mb-2';
+    title.textContent = p.name;
+
+    var hl = document.createElement('p');
+    hl.className = 'text-sm text-content-secondary leading-relaxed mb-5 flex-1';
+    hl.textContent = p.highlight;
+
+    var link = document.createElement('a');
+    link.href = 'detail.html?id=' + p.id;
+    link.className = 'btn-primary inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl text-white font-semibold text-sm';
+    link.setAttribute('aria-label', 'View details for ' + p.name);
+    link.innerHTML = 'View Details <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>';
+
+    body.appendChild(cat);
+    body.appendChild(title);
+    body.appendChild(hl);
+    body.appendChild(link);
+    article.appendChild(imgDiv);
+    article.appendChild(body);
+    return article;
+  }
+
+  /* ── Render grid ── */
+  function renderGrid(filter) {
+    var grid = document.getElementById('products-grid');
+    grid.innerHTML = '';
+    var list = filter === 'all' ? PRODUCTS : PRODUCTS.filter(function (p) { return p.category === filter; });
+    list.forEach(function (p, i) { grid.appendChild(renderCard(p, i)); });
+  }
+
+  /* ── Filter buttons ── */
+  document.querySelectorAll('.filter-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.filter-btn').forEach(function (b) {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-pressed', 'true');
+      renderGrid(btn.getAttribute('data-filter'));
+    });
+  });
+
+  /* ── Initial render ── */
+  renderGrid('all');
+}());
+</script>
+</body>
+</html>

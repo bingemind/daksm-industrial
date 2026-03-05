@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Raw site extraction archive (not part of new build)
+assets/
+
+# Node
+node_modules/

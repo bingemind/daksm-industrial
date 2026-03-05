@@ -6,7 +6,9 @@ module.exports = {
   // Scan all HTML and JS files so Tailwind only ships used classes
   content: [
     './*.html',
+    './products/**/*.html',
     './js/**/*.js',
+    './public/js/**/*.js',
   ],
 
   theme: {

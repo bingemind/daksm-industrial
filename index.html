@@ -101,15 +101,7 @@
           <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center
                       shadow-md transition-transform duration-300 group-hover:scale-105"
                aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z"
-                    stroke="white" stroke-width="2" stroke-linejoin="round" fill="none"/>
-              <path d="M2 17L12 22L22 17"
-                    stroke="white" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M2 12L12 17L22 12"
-                    stroke="white" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
+        <img src="public/images/daskm-logo.jpeg" alt="daksm">
           </div>
           <div class="hidden sm:block leading-none">
             <div class="font-display font-bold text-base text-content tracking-tight">
@@ -123,14 +115,16 @@
 
         <!-- ── Desktop nav links ── -->
         <div class="hidden lg:flex items-center gap-7" role="menubar">
-          <a href="#products"       class="nav-link text-sm font-medium text-content-secondary"
+          <a href="products/index.html" class="nav-link text-sm font-medium text-content-secondary"
              role="menuitem">Products</a>
           <!-- <a href="#calculator"     class="nav-link text-sm font-medium text-content-secondary"
              role="menuitem">Calculator</a> -->
           <a href="#about"          class="nav-link text-sm font-medium text-content-secondary"
              role="menuitem">About</a>
           <a href="#certifications" class="nav-link text-sm font-medium text-content-secondary"
-             role="menuitem">Certifications</a>
+             role="menuitem">Quality</a>
+          <a href="gallery/index.html" class="nav-link text-sm font-medium text-content-secondary"
+             role="menuitem">Gallery</a>
           <a href="#contact"        class="nav-link text-sm font-medium text-content-secondary"
              role="menuitem">Contact</a>
         </div>
@@ -234,7 +228,7 @@
       aria-label="Mobile navigation"
     >
       <div class="max-w-7xl mx-auto px-4 py-3 space-y-1">
-        <a href="#products"
+        <a href="products/index.html"
            class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary
                   hover:text-accent hover:bg-surface-secondary transition-colors"
            role="menuitem">Products</a>
@@ -246,10 +240,14 @@
            class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary
                   hover:text-accent hover:bg-surface-secondary transition-colors"
            role="menuitem">About</a>
-        <a href="#certifications"
+        <a href="#quality"
            class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary
                   hover:text-accent hover:bg-surface-secondary transition-colors"
-           role="menuitem">Certifications</a>
+           role="menuitem">Quality</a>
+        <a href="gallery/index.html"
+           class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary
+                  hover:text-accent hover:bg-surface-secondary transition-colors"
+           role="menuitem">Gallery</a>
         <a href="#contact"
            class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary
                   hover:text-accent hover:bg-surface-secondary transition-colors"
@@ -577,6 +575,17 @@
         <!-- Populated by renderProducts() in app.js -->
       </div>
 
+      <!-- View All Products CTA -->
+      <div class="mt-12 text-center">
+        <a href="products/index.html"
+           class="inline-flex items-center gap-2 btn-outline px-7 py-3.5 rounded-xl font-semibold text-sm">
+          View All 11 Products
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+
     </div>
   </section>
   <!-- / PRODUCTS SECTION -->
@@ -591,47 +600,386 @@
 
 
   <!-- ============================================================
-       ABOUT SECTION — Sprint 2
+       ABOUT SECTION
        ============================================================ -->
   <section id="about" class="py-24 bg-surface-secondary" aria-labelledby="about-heading">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl">
-        <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
-          About Us
-        </p>
-        <h2 id="about-heading"
-            class="font-display font-black text-4xl text-content mb-6">
-          About DAKSM Engineering
-        </h2>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+        <!-- Left: text -->
+        <div>
+          <p class="will-animate font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
+            About Us
+          </p>
+          <h2 id="about-heading"
+              class="will-animate font-display font-black text-4xl sm:text-5xl text-content
+                     leading-tight mb-6">
+            25 Years of<br/>
+            <span class="text-accent">Engineering Excellence</span>
+          </h2>
+
+          <div class="space-y-4 text-content-secondary text-base leading-relaxed">
+            <p>
+              Founded in 2000, DAKSM Engineering Industries has built a reputation as one of
+              India's foremost manufacturers of forged and cast steel valves — supplying gate,
+              globe, check, ball, and butterfly valves for the most demanding applications in
+              chemical, petrochemical, oil &amp; gas, nuclear power, cogeneration, and
+              cryogenic industries.
+            </p>
+            <p>
+              Every valve is designed, manufactured, and inspected to strictly conform with
+              ASTM, ASME, API, BS, and other internationally recognised standards. Our
+              stainless and high-alloy steel valves are characterised by unsurpassed
+              corrosion resistance and reliability — delivering the lowest cost of ownership
+              and the longest service life in the industry.
+            </p>
+            <p>
+              As an ISO 9001 certified manufacturer, we combine updated technical know-how
+              with an integrated production system across two specialised plants in Mumbai.
+              Our commitment is to continuously bring innovative valve designs to market,
+              with special emphasis on quality, safety, and ease of operation.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: highlight cards -->
+        <div class="will-animate grid grid-cols-2 gap-4" style="animation-delay: 0.12s">
+
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4"
+                 aria-hidden="true">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0
+                         00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="font-display font-black text-3xl text-content leading-none mb-1">
+              2000
+            </div>
+            <div class="text-xs text-muted leading-snug">Year Established</div>
+          </div>
+
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4"
+                 aria-hidden="true">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8
+                         8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div class="font-display font-black text-3xl text-content leading-none mb-1">
+              Mumbai
+            </div>
+            <div class="text-xs text-muted leading-snug">2 Manufacturing Plants</div>
+          </div>
+
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4"
+                 aria-hidden="true">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955
+                         0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622
+                         5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <div class="font-display font-black text-xl text-content leading-none mb-1">
+              ISO 9001
+            </div>
+            <div class="text-xs text-muted leading-snug">Certified Quality System</div>
+          </div>
+
+          <div class="rounded-2xl border border-border bg-surface p-6">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4"
+                 aria-hidden="true">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                      d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517
+                         l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8
+                         l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415
+                         3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009
+                         10.172V5L8 4z"/>
+              </svg>
+            </div>
+            <div class="font-display font-black text-xl text-content leading-none mb-1">
+              11+ Lines
+            </div>
+            <div class="text-xs text-muted leading-snug">Industrial Valve &amp; Sealing Products</div>
+          </div>
+
+        </div>
+
       </div>
-      <!-- About content — next sprint -->
-      <p class="font-mono text-xs text-muted border border-border-subtle rounded-lg
-                px-4 py-3 inline-block">
-        <!-- // Full about section — Sprint 2 -->
-      </p>
     </div>
   </section>
 
 
   <!-- ============================================================
-       CERTIFICATIONS SECTION — Sprint 2
+       CERTIFICATIONS & QUALITY SECTION
        ============================================================ -->
   <section id="certifications" class="py-24 bg-surface"
            aria-labelledby="certifications-heading">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl">
-        <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
+
+      <!-- Section header -->
+      <div class="max-w-2xl mb-12">
+        <p class="will-animate font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
           Standards &amp; Compliance
         </p>
         <h2 id="certifications-heading"
-            class="font-display font-black text-4xl text-content mb-6">
-          Certifications
+            class="will-animate font-display font-black text-4xl sm:text-5xl text-content
+                   leading-tight mb-4">
+          Quality You Can<br/>
+          <span class="text-accent">Count On</span>
         </h2>
+        <p class="will-animate text-base text-content-secondary leading-relaxed">
+          Every product leaves our facility only after rigorous inspection and testing,
+          backed by internationally recognised certifications.
+        </p>
       </div>
-      <p class="font-mono text-xs text-muted border border-border-subtle rounded-lg
-                px-4 py-3 inline-block">
-        <!-- // Certifications &amp; standards grid — Sprint 2 -->
-      </p>
+
+      <!-- Certification badges -->
+      <div class="will-animate flex flex-wrap gap-4 mb-14"
+           role="list" aria-label="Certifications">
+
+        <!-- ISO 9001:2015 -->
+        <div class="cert-badge" role="listitem">
+          <div class="cert-badge-icon" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955
+                       11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29
+                       9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm text-content">ISO 9001:2015</div>
+            <div class="text-xs text-muted">Quality Management</div>
+          </div>
+        </div>
+
+        <!-- API 6D -->
+        <div class="cert-badge" role="listitem">
+          <div class="cert-badge-icon" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0
+                       00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0
+                       00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26
+                       1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414
+                       l5-5A2 2 0 009 10.172V5L8 4z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm text-content">API 6D</div>
+            <div class="text-xs text-muted">Pipeline Valves</div>
+          </div>
+        </div>
+
+        <!-- ASME -->
+        <div class="cert-badge" role="listitem">
+          <div class="cert-badge-icon" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0
+                       01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1
+                       1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0
+                       01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1
+                       1 0 011-1h3a1 1 0 001-1V4z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm text-content">ASME B16.34</div>
+            <div class="text-xs text-muted">Pressure-Temperature Ratings</div>
+          </div>
+        </div>
+
+        <!-- BS -->
+        <div class="cert-badge" role="listitem">
+          <div class="cert-badge-icon" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8
+                       3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2
+                       2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9
+                       0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm text-content">BS Standards</div>
+            <div class="text-xs text-muted">British Standards</div>
+          </div>
+        </div>
+
+        <!-- ASTM -->
+        <div class="cert-badge" role="listitem">
+          <div class="cert-badge-icon" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2
+                       0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0
+                       012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm text-content">ASTM</div>
+            <div class="text-xs text-muted">Material Standards</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <hr class="border-border mb-14" />
+
+      <!-- Quality Policy -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+        <div class="will-animate">
+          <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-4">
+            Quality Policy
+          </p>
+          <h3 class="font-display font-bold text-2xl text-content mb-5">
+            Committed to Excellence at Every Stage
+          </h3>
+          <div class="space-y-4 text-content-secondary text-sm leading-relaxed">
+            <p>
+              At DAKSM Engineering Industries, quality is not a department — it is a culture.
+              Our ISO 9001:2015 certified management system governs every stage of the value
+              chain, from raw material procurement and in-process machining to final
+              hydrostatic and pneumatic testing, ensuring zero-defect delivery.
+            </p>
+            <p>
+              We are committed to continual improvement through data-driven root-cause
+              analysis, rigorous supplier qualification, and calibrated inspection equipment
+              traceable to national standards. Customer satisfaction and regulatory compliance
+              are the twin pillars of every decision we make on the shop floor and beyond.
+            </p>
+          </div>
+        </div>
+
+        <!-- In-House Testing Capabilities -->
+        <div class="will-animate" style="animation-delay: 0.12s">
+          <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-4">
+            In-House Testing Capabilities
+          </p>
+          <h3 class="font-display font-bold text-2xl text-content mb-5">
+            Verified by Science, Certified by Standards
+          </h3>
+          <div class="flex flex-wrap gap-2.5" role="list" aria-label="Testing capabilities">
+            <span class="capability-chip" role="listitem">Radiography</span>
+            <span class="capability-chip" role="listitem">Magnetic Particle Testing</span>
+            <span class="capability-chip" role="listitem">Dye Penetrant Testing</span>
+            <span class="capability-chip" role="listitem">Ultrasonic Examination</span>
+            <span class="capability-chip" role="listitem">Chemical Analysis</span>
+            <span class="capability-chip" role="listitem">Mechanical Testing</span>
+            <span class="capability-chip" role="listitem">Metallurgical Examination</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CLIENTS SECTION
+       ============================================================ -->
+  <section id="clients" class="py-24 bg-surface-secondary"
+           aria-labelledby="clients-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-2xl mb-14 text-center mx-auto">
+        <p class="will-animate font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
+          Our Clients
+        </p>
+        <h2 id="clients-heading"
+            class="will-animate font-display font-black text-4xl sm:text-5xl text-content
+                   leading-tight mb-4">
+          Trusted by<br/>
+          <span class="text-accent">Industry Leaders</span>
+        </h2>
+        <p class="will-animate text-base text-content-secondary leading-relaxed">
+          From petrochemical refineries to power generation plants, leading organisations
+          worldwide trust DAKSM for critical valve applications.
+        </p>
+      </div>
+
+      <!-- Logo marquee: infinite scrolling ticker -->
+      <div class="clients-marquee-wrapper" aria-label="Client logos" role="list">
+        <div class="clients-marquee-track">
+          <!-- Set 1 -->
+          <div class="client-logo-cell" role="listitem">
+            <img src="public/images/clients/Clients-01.png" alt="BK Birla Group" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" role="listitem">
+            <img src="public/images/clients/Clients-02.png" alt="Century Rayon" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" role="listitem">
+            <img src="public/images/clients/Clients-03.png" alt="Century Textiles" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" role="listitem">
+            <img src="public/images/clients/Clients-04.png" alt="Viswaat Chemicals" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" role="listitem">
+            <img src="public/images/clients/Clients-05.png" alt="Fine Organics" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" role="listitem">
+            <img src="public/images/clients/Clients-06.png" alt="Rhodia Solvay Group" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" role="listitem">
+            <img src="public/images/clients/Clients-08.png" alt="Nocil Limited" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" role="listitem">
+            <img src="public/images/clients/Clients-09.png" alt="Clariant" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" role="listitem">
+            <img src="public/images/clients/Clients-10.png" alt="United Breweries" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" role="listitem">
+            <img src="public/images/clients/Clients-11.png" alt="Centaur" loading="lazy" class="client-logo-img" />
+          </div>
+          <!-- Set 2 (duplicate for seamless loop) -->
+          <div class="client-logo-cell" aria-hidden="true">
+            <img src="public/images/clients/Clients-01.png" alt="" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" aria-hidden="true">
+            <img src="public/images/clients/Clients-02.png" alt="" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" aria-hidden="true">
+            <img src="public/images/clients/Clients-03.png" alt="" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" aria-hidden="true">
+            <img src="public/images/clients/Clients-04.png" alt="" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" aria-hidden="true">
+            <img src="public/images/clients/Clients-05.png" alt="" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" aria-hidden="true">
+            <img src="public/images/clients/Clients-06.png" alt="" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" aria-hidden="true">
+            <img src="public/images/clients/Clients-08.png" alt="" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" aria-hidden="true">
+            <img src="public/images/clients/Clients-09.png" alt="" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" aria-hidden="true">
+            <img src="public/images/clients/Clients-10.png" alt="" loading="lazy" class="client-logo-img" />
+          </div>
+          <div class="client-logo-cell" aria-hidden="true">
+            <img src="public/images/clients/Clients-11.png" alt="" loading="lazy" class="client-logo-img" />
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -662,8 +1010,8 @@
         </p>
       </div>
 
-      <!-- CTA card grid -->
-      <div class="grid sm:grid-cols-2 gap-6 max-w-3xl">
+      <!-- CTA card grid — 3 columns -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
 
         <!-- ── WhatsApp Card ── -->
         <div class="will-animate contact-cta-card card-whatsapp">
@@ -738,13 +1086,69 @@
           </a>
         </div>
 
+        <!-- ── Location Card ── -->
+        <div class="will-animate contact-cta-card card-location" style="animation-delay: 0.22s">
+          <!-- Icon halo -->
+          <div class="contact-card-icon icon-location" aria-hidden="true">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8
+                       8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+
+          <!-- Card body -->
+          <div>
+            <h3 class="font-display font-bold text-xl text-content mb-1">
+              Visit Us
+            </h3>
+            <p class="text-sm text-content-secondary leading-relaxed">
+              C-4, 1603, Harihar, Madhav Sankalp,<br/>
+              Wayale Nagar, Kalyan (W),<br/>
+              Thane – 421301, Maharashtra, India.
+            </p>
+            <p class="text-sm text-content-secondary mt-2">
+              <span class="text-muted">Tel:</span> +91-251-2213518<br/>
+              <span class="text-muted">Mob:</span> +91-9821031129 / 9699611129
+            </p>
+          </div>
+
+          <!-- Open in Maps -->
+          <a href="https://maps.app.goo.gl/HT3uWB9RZnmGqynT7"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn-outline inline-flex items-center justify-center gap-2.5
+                    px-6 py-3.5 rounded-xl font-semibold text-sm w-full sm:w-auto"
+             aria-label="Open DAKSM location in Google Maps">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor"
+                 viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0
+                       0v6m0-6L10 14"/>
+            </svg>
+            Open in Google Maps
+          </a>
+        </div>
+
       </div><!-- / card grid -->
 
-      <!-- Sprint 2 placeholder: full enquiry form goes below -->
-      <p class="font-mono text-xs text-muted border border-border-subtle rounded-lg
-                px-4 py-3 inline-block mt-12">
-        <!-- // Full enquiry form — Sprint 2 -->
-      </p>
+      <!-- Map embed -->
+      <div class="will-animate rounded-2xl overflow-hidden border border-border
+                  shadow-lg" style="height: 400px;">
+        <iframe
+          src="https://maps.google.com/maps?q=19.234925,73.121675&z=16&output=embed"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="DAKSM Engineering Industries location — Kalyan, Maharashtra"
+          aria-label="Google Maps showing DAKSM Engineering location"
+        ></iframe>
+      </div>
 
     </div>
   </section>
@@ -753,28 +1157,50 @@
   <!-- ============================================================
        FOOTER — minimal, Sprint 2 will expand
        ============================================================ -->
-  <footer class="py-8 bg-surface border-t border-border" aria-label="Footer">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row
-                items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-7 h-7 rounded-lg bg-accent flex items-center justify-center"
-             aria-hidden="true">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z"
-                  stroke="white" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2"
-                  stroke-linejoin="round"/>
-            <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2"
-                  stroke-linejoin="round"/>
-          </svg>
+  <footer class="bg-surface border-t border-border" aria-label="Footer">
+
+    <!-- Main footer row: brand + nav + copyright -->
+    <div class="py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+
+          <!-- Brand -->
+          <div class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-accent flex items-center justify-center"
+                 aria-hidden="true">
+                 <img src="public/images/daskm-logo.jpeg" alt="daksm">
+            </div>
+            <span class="font-display font-bold text-sm text-content">DAKSM Engineering Industries Pvt Ltd</span>
+          </div>
+
+          <!-- Footer nav links -->
+          <nav class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted" aria-label="Footer navigation">
+            <a href="products/index.html" class="hover:text-accent transition-colors">Products</a>
+            <a href="#about"              class="hover:text-accent transition-colors">About</a>
+            <a href="#certifications"     class="hover:text-accent transition-colors">Certifications</a>
+            <a href="gallery/index.html"  class="hover:text-accent transition-colors">Gallery</a>
+            <a href="#contact"            class="hover:text-accent transition-colors">Contact</a>
+          </nav>
+
         </div>
-        <span class="font-display font-bold text-sm text-content">DAKSM Engineering Industries Pvt Ltd</span>
       </div>
-      <p class="text-xs text-muted text-center sm:text-right">
-        &copy; <span id="footer-year"></span> DAKSM Engineering Industries Pvt Ltd.
-        All rights reserved.
-      </p>
     </div>
+
+    <!-- Bottom bar: copyright + credit -->
+    <div class="border-t border-border py-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+                  flex flex-col sm:flex-row items-center justify-between gap-2">
+        <p class="text-xs text-muted">
+          &copy; <span id="footer-year"></span> DAKSM Engineering Pvt Ltd. All Rights Reserved.
+        </p>
+        <p class="text-xs text-muted">
+          Built and managed by&nbsp;<a href="https://bingemind.com"
+            target="_blank" rel="noopener noreferrer"
+            class="text-accent hover:underline font-medium">Bingemind</a>
+        </p>
+      </div>
+    </div>
+
   </footer>
 
 
