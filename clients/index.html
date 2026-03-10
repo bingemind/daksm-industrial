@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Clients | DAKSM Engineering Industries Pvt Ltd</title>
+  <meta name="description" content="DAKSM Engineering Industries serves 33+ leading industrial clients across chemicals, pharmaceuticals, steel, and energy sectors in India." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230056B3'/><path d='M8 10h16M8 16h16M8 22h16' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind = { config: {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: {
+          accent: 'var(--color-accent)', 'accent-hover': 'var(--color-accent-hover)',
+          surface: 'var(--color-bg-primary)', 'surface-secondary': 'var(--color-bg-secondary)',
+          'surface-tertiary': 'var(--color-bg-tertiary)',
+          content: 'var(--color-text-primary)', 'content-secondary': 'var(--color-text-secondary)',
+          muted: 'var(--color-text-muted)', border: 'var(--color-border)',
+        },
+        fontFamily: {
+          sans: ['Inter','system-ui','sans-serif'],
+          display: ['Montserrat','system-ui','sans-serif'],
+          mono: ['JetBrains Mono','monospace'],
+        },
+      }},
+    }};
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/custom.css" />
+  <style>
+    .client-card {
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+    .client-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 4px 24px rgba(var(--color-accent-rgb), 0.12);
+      transform: translateY(-2px);
+    }
+    .client-card.no-link {
+      cursor: default;
+    }
+    .client-card.no-link:hover {
+      border-color: var(--color-border);
+      box-shadow: none;
+      transform: none;
+    }
+    .client-logo-wrap {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .client-logo-wrap img {
+      max-width: 100%;
+      max-height: 72px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(20%);
+      transition: filter 0.2s;
+    }
+    .client-card:hover .client-logo-wrap img {
+      filter: grayscale(0%);
+    }
+    .client-name {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      text-align: center;
+      line-height: 1.4;
+    }
+    .client-visit-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .client-card:hover .client-visit-badge {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased bg-surface text-content">
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+
+      <!-- Logo -->
+      <a href="../" class="flex items-center gap-3 group shrink-0" aria-label="DAKSM home">
+        <div class="hidden sm:block leading-none">
+          <img class="w-60 h-10 rounded-xl bg-accent shadow-md transition-transform duration-300 group-hover:scale-105"
+               src="../public/images/daskm-logo.jpeg" alt="DAKSM Engineering" />
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden lg:flex items-center gap-7" role="menubar">
+        <a href="../products/" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Products</a>
+        <a href="../index.html#about" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">About</a>
+        <a href="../index.html#certifications" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Quality</a>
+        <a href="../gallery/" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Gallery</a>
+        <a href="./" class="nav-link is-active text-sm font-medium" role="menuitem">Clients</a>
+        <a href="../index.html#contact" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Contact</a>
+      </div>
+
+      <!-- Right controls -->
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" type="button" class="theme-toggle-btn" role="switch" aria-checked="false" aria-label="Toggle theme">
+          <span class="theme-toggle-thumb">
+            <svg class="theme-icon-sun" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <svg class="theme-icon-moon" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+          </span>
+        </button>
+        <a href="../index.html#contact" class="hidden sm:inline-flex items-center gap-2 btn-primary px-4 py-2 rounded-lg text-white text-sm font-semibold">
+          Get Quote
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 rounded-lg text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors" aria-label="Open menu" aria-expanded="false">
+          <svg class="icon-menu w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-border bg-surface">
+    <div class="max-w-7xl mx-auto px-4 py-3 space-y-1">
+      <a href="../products/" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Products</a>
+      <a href="../index.html#about" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">About</a>
+      <a href="../index.html#certifications" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Certifications</a>
+      <a href="../gallery/" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Gallery</a>
+      <a href="./" class="block px-4 py-3 rounded-lg text-sm font-medium text-accent bg-surface-secondary">Clients</a>
+      <a href="../index.html#contact" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Contact</a>
+      <div class="pt-2 pb-1">
+        <a href="../index.html#contact" class="btn-primary flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-white font-semibold text-sm">Get Quote</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- / NAVIGATION -->
+
+
+<!-- ============================================================
+     PAGE HEADER
+     ============================================================ -->
+<header class="pt-28 pb-16 bg-surface-secondary border-b border-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">Our Clients</p>
+    <h1 class="font-display font-black text-4xl sm:text-5xl text-content leading-tight mb-4">
+      Trusted by Industry<br class="hidden sm:block" /> Leaders
+    </h1>
+    <p class="text-content-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+      From Fortune 500 conglomerates to pioneering specialty-chemical firms — DAKSM valves and sealing products keep critical processes running across India's most demanding industrial sectors.
+    </p>
+    <!-- Stats strip -->
+    <div class="mt-10 flex flex-wrap justify-center gap-8 sm:gap-12">
+      <div class="text-center">
+        <div class="font-display font-black text-3xl sm:text-4xl text-accent">33+</div>
+        <div class="text-xs font-mono text-muted uppercase tracking-widest mt-1">Clients</div>
+      </div>
+      <div class="text-center">
+        <div class="font-display font-black text-3xl sm:text-4xl text-accent">25+</div>
+        <div class="text-xs font-mono text-muted uppercase tracking-widest mt-1">Years</div>
+      </div>
+      <div class="text-center">
+        <div class="font-display font-black text-3xl sm:text-4xl text-accent">11</div>
+        <div class="text-xs font-mono text-muted uppercase tracking-widest mt-1">Product Lines</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ============================================================
+     CLIENTS GRID
+     ============================================================ -->
+<main class="py-16 bg-surface">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+
+      <!-- 01 Grasim Industries -->
+      <a href="https://www.grasim.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Grasim Industries Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-01.jfif" alt="Grasim Industries Limited" loading="lazy" />
+        </div>
+        <span class="client-name">Grasim Industries</span>
+        <span class="client-visit-badge">
+          Visit
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <!-- 02 Kilburn Engineering -->
+      <a href="https://www.kilburnengg.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Kilburn Engineering Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-02.png" alt="Kilburn Engineering Limited" loading="lazy" />
+        </div>
+        <span class="client-name">Kilburn Engineering</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 03 Embio Limited -->
+      <a href="https://www.embio.co.in/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Embio Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-03.jfif" alt="Embio Limited" loading="lazy" />
+        </div>
+        <span class="client-name">Embio Limited</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 04 BioXera Pharma -->
+      <a href="https://www.bioxerapharma.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit BioXera Pharma Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-04.jfif" alt="BioXera Pharma Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">BioXera Pharma</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 05 Artson Limited -->
+      <a href="https://artson.net/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Artson Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-05.png" alt="Artson Limited (A Tata Enterprise)" loading="lazy" />
+        </div>
+        <span class="client-name">Artson Limited</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 06 GTS Controls -->
+      <a href="https://gtscontrolsenergy.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit GTS Controls & Energy Systems Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-06.jfif" alt="GTS Controls & Energy Systems Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">GTS Controls &amp; Energy</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 07 JSW Steel -->
+      <a href="https://www.jswsteel.in/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit JSW Steel">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-07.jfif" alt="JSW Steel" loading="lazy" />
+        </div>
+        <span class="client-name">JSW Steel</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 08 V&V Pharma -->
+      <a href="https://www.vandvpharma.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit V&V Pharma Industries">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-08.png" alt="V&V Pharma Industries" loading="lazy" />
+        </div>
+        <span class="client-name">V&amp;V Pharma Industries</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 09 Sudarshan Chemical -->
+      <a href="https://www.sudarshan.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Sudarshan Chemical Industries Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-09.jpg" alt="Sudarshan Chemical Industries Limited" loading="lazy" />
+        </div>
+        <span class="client-name">Sudarshan Chemical</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 10 Nandadeep Chemicals -->
+      <a href="https://www.nandadeepchemicals.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Nandadeep Chemicals Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-10.png" alt="Nandadeep Chemicals Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Nandadeep Chemicals</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 11 Tata Projects -->
+      <a href="https://tataprojects.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Tata Projects">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-11.png" alt="Tata Projects" loading="lazy" />
+        </div>
+        <span class="client-name">Tata Projects</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 12 Vinati Organics -->
+      <a href="https://vinatiorganics.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Vinati Organics Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-12.png" alt="Vinati Organics Limited" loading="lazy" />
+        </div>
+        <span class="client-name">Vinati Organics</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 13 Fine Organics -->
+      <a href="https://www.fineorganics.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Fine Organics Industries Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-13.png" alt="Fine Organics Industries Limited" loading="lazy" />
+        </div>
+        <span class="client-name">Fine Organics</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 14 Heubach Colorants -->
+      <a href="https://heubach.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Heubach Colorants (India) Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-14.png" alt="Heubach Colorants (India) Limited" loading="lazy" />
+        </div>
+        <span class="client-name">Heubach Colorants</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 15 Viswaat Chemicals -->
+      <a href="https://www.viswaat.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Viswaat Chemicals Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-15.png" alt="Viswaat Chemicals Limited" loading="lazy" />
+        </div>
+        <span class="client-name">Viswaat Chemicals</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 16 Woodfields Systems -->
+      <a href="https://www.woodfieldsystems.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Woodfields Systems International">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-16.png" alt="Woodfields Systems International" loading="lazy" />
+        </div>
+        <span class="client-name">Woodfields Systems</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 17 Keva Fragrances -->
+      <a href="https://keva.co.in/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Keva Fragrances Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-17.png" alt="Keva Fragrances Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Keva Fragrances</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 18 Oilmax Energy -->
+      <a href="https://oilmax.in/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Oilmax Energy Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-18.png" alt="Oilmax Energy Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Oilmax Energy</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 19 Sai Fertilizers (Fogla) -->
+      <a href="https://www.foglacorp.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Sai Fertilizers Phosphates Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-19.png" alt="Sai Fertilizers Phosphates Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Sai Fertilizers</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 20 ASB International -->
+      <a href="https://www.asbindia.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit ASB International Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-20.png" alt="ASB International Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">ASB International</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 21 Aastrid Life Sciences -->
+      <a href="https://www.aastridlifesciences.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Aastrid Life Sciences Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-21.jfif" alt="Aastrid Life Sciences Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Aastrid Life Sciences</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 22 Bhaskar Industries -->
+      <a href="https://www.bhaskarindustries.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Bhaskar Industries Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-22.png" alt="Bhaskar Industries Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Bhaskar Industries</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 23 Viraj Profiles -->
+      <a href="https://www.viraj.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Viraj Profiles Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-23.png" alt="Viraj Profiles Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Viraj Profiles</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 24 Ab Mauri India -->
+      <a href="https://www.abmauri.in/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Ab Mauri India Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-24.jfif" alt="Ab Mauri India Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Ab Mauri India</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 25 Odyssey Organics -->
+      <a href="https://odysseyorganics.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Odyssey Organics Pvt. Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-25.png" alt="Odyssey Organics Pvt. Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Odyssey Organics</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 26 Aquapharm Chemical -->
+      <a href="https://aquapharm-india.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Aquapharm Chemical Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-26.png" alt="Aquapharm Chemical Limited" loading="lazy" />
+        </div>
+        <span class="client-name">Aquapharm Chemical</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 27 Shree Hari Chemicals -->
+      <a href="https://shreeharichemicals.in/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Shree Hari Chemicals Export Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-27.png" alt="Shree Hari Chemicals Export Limited" loading="lazy" />
+        </div>
+        <span class="client-name">Shree Hari Chemicals</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 28 Shree Pushkar Chemicals -->
+      <a href="https://www.shreepushkar.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Shree Pushkar Chemicals & Fertilisers Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-28.png" alt="Shree Pushkar Chemicals & Fertilisers Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Shree Pushkar Chemicals</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 29 Technocraft Industries -->
+      <a href="https://www.technocraftgroup.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Technocraft Industries India Ltd.">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-29.png" alt="Technocraft Industries India Ltd." loading="lazy" />
+        </div>
+        <span class="client-name">Technocraft Industries</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 30 Rhodia Solvay Group — no URL in client list, shown without link -->
+      <div class="client-card no-link" aria-label="Rhodia Solvay Group">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-30.png" alt="Rhodia Solvay Group" loading="lazy" />
+        </div>
+        <span class="client-name">Rhodia Solvay Group</span>
+      </div>
+
+      <!-- 31 NOCIL Limited -->
+      <a href="https://www.nocil.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit NOCIL Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-31.png" alt="NOCIL Limited" loading="lazy" />
+        </div>
+        <span class="client-name">NOCIL Limited</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 32 DMCC Speciality Chemicals -->
+      <a href="https://www.dmcc.com/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit DMCC Speciality Chemicals Limited">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-32.png" alt="DMCC Speciality Chemicals Limited" loading="lazy" />
+        </div>
+        <span class="client-name">DMCC Speciality Chemicals</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 33 Century Rayon -->
+      <a href="https://www.centuryrayon.co.in/" target="_blank" rel="noopener noreferrer" class="client-card" aria-label="Visit Century Rayon">
+        <div class="client-logo-wrap">
+          <img src="../public/images/clients/logos/client-33.jpg" alt="Century Rayon (Century Textile and Industries Ltd.)" loading="lazy" />
+        </div>
+        <span class="client-name">Century Rayon</span>
+        <span class="client-visit-badge">Visit <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+    </div><!-- / grid -->
+
+    <!-- CTA strip -->
+    <div class="mt-16 text-center">
+      <p class="text-content-secondary text-sm mb-4">Want to become our next client?</p>
+      <a href="../index.html#contact"
+         class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm">
+        Get in Touch
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="py-10 bg-surface border-t border-border" aria-label="Footer">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg bg-accent flex items-center justify-center" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="font-display font-bold text-sm text-content">DAKSM Engineering Industries Pvt Ltd</span>
+      </div>
+      <nav class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted" aria-label="Footer navigation">
+        <a href="../products/" class="hover:text-accent transition-colors">Products</a>
+        <a href="../index.html#about" class="hover:text-accent transition-colors">About</a>
+        <a href="../index.html#certifications" class="hover:text-accent transition-colors">Certifications</a>
+        <a href="../gallery/" class="hover:text-accent transition-colors">Gallery</a>
+        <a href="./" class="hover:text-accent transition-colors">Clients</a>
+        <a href="../index.html#contact" class="hover:text-accent transition-colors">Contact</a>
+      </nav>
+      <p class="text-xs text-muted">
+        &copy; <span id="footer-year"></span> DAKSM Engineering Industries Pvt Ltd.
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  /* ── Navbar scroll behaviour ── */
+  var nav = document.getElementById('navbar');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 20) {
+      nav.classList.add('navbar-scrolled');
+    } else {
+      nav.classList.remove('navbar-scrolled');
+    }
+  }, { passive: true });
+
+  /* ── Mobile menu toggle ── */
+  var menuBtn = document.getElementById('mobile-menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', function () {
+    var isOpen = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden', isOpen);
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    menuBtn.querySelector('.icon-menu').classList.toggle('hidden', !isOpen);
+    menuBtn.querySelector('.icon-close').classList.toggle('hidden', isOpen);
+  });
+
+  /* ── Theme toggle ── */
+  var themeBtn = document.getElementById('theme-toggle');
+  var html = document.documentElement;
+  var savedTheme = localStorage.getItem('daksm-theme');
+  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    html.classList.add('dark');
+    themeBtn.setAttribute('aria-checked', 'true');
+  }
+  themeBtn.addEventListener('click', function () {
+    var isDark = html.classList.toggle('dark');
+    themeBtn.setAttribute('aria-checked', String(isDark));
+    localStorage.setItem('daksm-theme', isDark ? 'dark' : 'light');
+  });
+
+  /* ── Footer year ── */
+  var fyEl = document.getElementById('footer-year');
+  if (fyEl) fyEl.textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
