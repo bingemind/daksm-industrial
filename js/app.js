@@ -50,12 +50,12 @@ const ThemeManager = (() => {
     localStorage.setItem(STORAGE_KEY, next);
   };
 
-  /** Sync the toggle button's aria-checked and label. */
+  /** Sync all toggle buttons' aria-checked and label. */
   const _updateToggleUI = () => {
-    const btn = document.getElementById('theme-toggle');
-    if (!btn) return;
     const dark = isDark();
-    btn.setAttribute('aria-checked', dark ? 'true' : 'false');
+    document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+      btn.setAttribute('aria-checked', dark ? 'true' : 'false');
+    });
     // Update the visible label next to the toggle (if present)
     const label = document.getElementById('theme-label');
     if (label) {
@@ -70,11 +70,10 @@ const ThemeManager = (() => {
       ? 'dark' : 'light';
     applyTheme(saved ?? system);
 
-    // Wire up the toggle button
-    const btn = document.getElementById('theme-toggle');
-    if (btn) {
+    // Wire up all toggle buttons (desktop + mobile)
+    document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
       btn.addEventListener('click', toggle);
-    }
+    });
 
     // Also respond to OS theme changes (when no saved preference)
     window.matchMedia('(prefers-color-scheme: dark)')
