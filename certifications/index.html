@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certifications | DAKSM Engineering Industries Pvt Ltd</title>
+  <meta name="description" content="DAKSM Engineering Industries holds ISO 9001:2015 Quality Management System certification, GST Registration, and UDYAM (MSME) Registration." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/jpeg" href="../public/images/daskm-logo.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind = { config: {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: {
+          accent: 'var(--color-accent)', 'accent-hover': 'var(--color-accent-hover)',
+          surface: 'var(--color-bg-primary)', 'surface-secondary': 'var(--color-bg-secondary)',
+          'surface-tertiary': 'var(--color-bg-tertiary)',
+          content: 'var(--color-text-primary)', 'content-secondary': 'var(--color-text-secondary)',
+          muted: 'var(--color-text-muted)', border: 'var(--color-border)',
+        },
+        fontFamily: {
+          sans: ['Inter','system-ui','sans-serif'],
+          display: ['Montserrat','system-ui','sans-serif'],
+          mono: ['JetBrains Mono','monospace'],
+        },
+      }},
+    }};
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/custom.css" />
+  <style>
+    /* ── Certificate card ── */
+    .cert-card {
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .cert-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 6px 32px rgba(var(--color-accent-rgb), 0.12);
+      transform: translateY(-3px);
+    }
+    .cert-thumb-wrap {
+      position: relative;
+      overflow: hidden;
+      background: var(--color-bg-secondary);
+      aspect-ratio: 3/4;
+    }
+    .cert-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      display: block;
+    }
+    /* transparent overlay blocks right-click / drag on the image */
+    .cert-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: transparent;
+      cursor: zoom-in;
+    }
+    /* "View" badge on hover */
+    .cert-thumb-wrap::after {
+      content: 'View Certificate';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(var(--color-accent-rgb), 0.9);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0.6rem;
+      transform: translateY(100%);
+      transition: transform 0.22s ease;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .cert-card:hover .cert-thumb-wrap::after {
+      transform: translateY(0);
+    }
+
+    /* ── Lightbox ── */
+    .cert-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .cert-lightbox.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .cert-lightbox-inner {
+      position: relative;
+      max-width: min(92vw, 860px);
+      max-height: 94vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cert-lightbox-img-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+      max-height: 86vh;
+    }
+    .cert-lightbox-img-wrap img {
+      display: block;
+      max-width: 100%;
+      max-height: 86vh;
+      object-fit: contain;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    /* overlay on lightbox image too */
+    .cert-lightbox-img-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: transparent;
+    }
+    .cert-lightbox-close {
+      position: absolute;
+      top: -2.5rem;
+      right: 0;
+      width: 2rem;
+      height: 2rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s;
+      z-index: 4;
+    }
+    .cert-lightbox-close:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .cert-lightbox-caption {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-align: center;
+    }
+    /* prev / next nav */
+    .cert-lightbox-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.5rem;
+      height: 2.5rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s;
+      z-index: 4;
+    }
+    .cert-lightbox-btn:hover { background: rgba(255,255,255,0.25); }
+    .cert-lightbox-btn.btn-prev { left: -3.5rem; }
+    .cert-lightbox-btn.btn-next { right: -3.5rem; }
+    @media (max-width: 640px) {
+      .cert-lightbox-btn.btn-prev { left: 0.5rem; }
+      .cert-lightbox-btn.btn-next { right: 0.5rem; }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased bg-surface text-content">
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+
+      <!-- Logo -->
+      <a href="../" class="flex items-center gap-3 group shrink-0" aria-label="DAKSM home">
+        <div class="block leading-none">
+          <img class="w-60 h-10 rounded-xl bg-accent shadow-md transition-transform duration-300 group-hover:scale-105"
+               src="../public/images/daskm-logo.jpeg" alt="DAKSM Engineering" />
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden lg:flex items-center gap-7" role="menubar">
+        <a href="../products/" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Products</a>
+        <a href="../index.html#about" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">About</a>
+        <a href="./" class="nav-link is-active text-sm font-medium" role="menuitem">Quality</a>
+        <a href="../gallery/" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Gallery</a>
+        <a href="../clients/" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Clients</a>
+        <a href="../index.html#contact" class="nav-link text-sm font-medium text-content-secondary" role="menuitem">Contact</a>
+      </div>
+
+      <!-- Right controls -->
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" data-theme-toggle type="button" class="theme-toggle-btn hidden lg:block" role="switch" aria-checked="false" aria-label="Toggle theme">
+          <span class="theme-toggle-thumb">
+            <svg class="theme-icon-sun" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <svg class="theme-icon-moon" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+          </span>
+        </button>
+        <a href="../index.html#contact" class="hidden sm:inline-flex items-center gap-2 btn-primary px-4 py-2 rounded-lg text-white text-sm font-semibold">
+          Get Quote
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 rounded-lg text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors" aria-label="Open menu" aria-expanded="false">
+          <svg class="icon-menu w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-border bg-surface">
+    <div class="max-w-7xl mx-auto px-4 py-3 space-y-1">
+      <a href="../products/" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Products</a>
+      <a href="../index.html#about" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">About</a>
+      <a href="./" class="block px-4 py-3 rounded-lg text-sm font-medium text-accent bg-surface-secondary">Quality</a>
+      <a href="../gallery/" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Gallery</a>
+      <a href="../clients/" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Clients</a>
+      <a href="../index.html#contact" class="block px-4 py-3 rounded-lg text-sm font-medium text-content-secondary hover:text-accent hover:bg-surface-secondary transition-colors">Contact</a>
+      <!-- Theme toggle row -->
+      <div class="flex items-center justify-between px-4 py-3 border-t border-border mt-2">
+        <span class="text-sm font-medium text-content-secondary">Dark mode</span>
+        <button data-theme-toggle type="button" class="theme-toggle-btn" role="switch" aria-checked="false" aria-label="Toggle theme">
+          <span class="theme-toggle-thumb">
+            <svg class="theme-icon-sun" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <svg class="theme-icon-moon" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+          </span>
+        </button>
+      </div>
+      <div class="pt-2 pb-1">
+        <a href="../index.html#contact" class="btn-primary flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-white font-semibold text-sm">Get Quote</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- / NAVIGATION -->
+
+
+<!-- ============================================================
+     PAGE HEADER
+     ============================================================ -->
+<div class="pt-28 pb-12 bg-surface-secondary border-b border-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">Standards &amp; Compliance</p>
+    <h1 class="font-display font-black text-4xl sm:text-5xl text-content leading-tight mb-3">
+      Quality You Can<br/><span class="text-accent">Count On</span>
+    </h1>
+    <p class="text-base text-content-secondary max-w-xl leading-relaxed">
+      Every product leaves our facility only after rigorous inspection and testing,
+      backed by internationally recognised certifications.
+    </p>
+  </div>
+</div>
+
+
+<main id="quality-main">
+
+  <!-- ============================================================
+       QUALITY STANDARDS
+       ============================================================ -->
+  <section class="py-16 lg:py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Standards badges -->
+      <div class="flex flex-wrap gap-4 mb-14" role="list" aria-label="Quality standards">
+
+        <!-- ISO 9001:2015 -->
+        <div class="cert-badge" role="listitem">
+          <div class="cert-badge-icon" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955
+                       11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29
+                       9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm text-content">ISO 9001:2015</div>
+            <div class="text-xs text-muted">Quality Management</div>
+          </div>
+        </div>
+
+        <!-- API 6D -->
+        <div class="cert-badge" role="listitem">
+          <div class="cert-badge-icon" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0
+                       00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0
+                       00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26
+                       1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414
+                       l5-5A2 2 0 009 10.172V5L8 4z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm text-content">API 6D</div>
+            <div class="text-xs text-muted">Pipeline Valves</div>
+          </div>
+        </div>
+
+        <!-- ASME -->
+        <div class="cert-badge" role="listitem">
+          <div class="cert-badge-icon" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0
+                       01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1
+                       1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0
+                       01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1
+                       1 0 011-1h3a1 1 0 001-1V4z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm text-content">ASME B16.34</div>
+            <div class="text-xs text-muted">Pressure-Temperature Ratings</div>
+          </div>
+        </div>
+
+        <!-- BS Standards -->
+        <div class="cert-badge" role="listitem">
+          <div class="cert-badge-icon" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8
+                       3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2
+                       2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9
+                       0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm text-content">BS Standards</div>
+            <div class="text-xs text-muted">British Standards</div>
+          </div>
+        </div>
+
+        <!-- ASTM -->
+        <div class="cert-badge" role="listitem">
+          <div class="cert-badge-icon" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2
+                       0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0
+                       012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display font-bold text-sm text-content">ASTM</div>
+            <div class="text-xs text-muted">Material Standards</div>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="border-border mb-14" />
+
+      <!-- Quality Policy + Testing Capabilities -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+        <div>
+          <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-4">Quality Policy</p>
+          <h2 class="font-display font-bold text-2xl text-content mb-5">
+            Committed to Excellence at Every Stage
+          </h2>
+          <div class="space-y-4 text-content-secondary text-sm leading-relaxed">
+            <p>
+              At DAKSM Engineering Industries, quality is not a department — it is a culture.
+              Our ISO 9001:2015 certified management system governs every stage of the value
+              chain, from raw material procurement and in-process machining to final
+              hydrostatic and pneumatic testing, ensuring zero-defect delivery.
+            </p>
+            <p>
+              We are committed to continual improvement through data-driven root-cause
+              analysis, rigorous supplier qualification, and calibrated inspection equipment
+              traceable to national standards. Customer satisfaction and regulatory compliance
+              are the twin pillars of every decision we make on the shop floor and beyond.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-4">In-House Testing Capabilities</p>
+          <h2 class="font-display font-bold text-2xl text-content mb-5">
+            Verified by Science, Certified by Standards
+          </h2>
+          <div class="flex flex-wrap gap-2.5" role="list" aria-label="Testing capabilities">
+            <span class="capability-chip" role="listitem">Radiography</span>
+            <span class="capability-chip" role="listitem">Magnetic Particle Testing</span>
+            <span class="capability-chip" role="listitem">Dye Penetrant Testing</span>
+            <span class="capability-chip" role="listitem">Ultrasonic Examination</span>
+            <span class="capability-chip" role="listitem">Chemical Analysis</span>
+            <span class="capability-chip" role="listitem">Mechanical Testing</span>
+            <span class="capability-chip" role="listitem">Metallurgical Examination</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       OFFICIAL CERTIFICATES
+       ============================================================ -->
+  <section class="py-16 lg:py-20 bg-surface-secondary border-t border-border" id="certificates">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="mb-10">
+        <p class="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">Official Documents</p>
+        <h2 class="font-display font-bold text-3xl text-content">Our Certificates</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- ISO 9001:2015 -->
+        <div class="cert-card" role="button" tabindex="0" aria-label="View ISO 9001:2015 Certificate" data-cert-index="0">
+          <div class="cert-thumb-wrap">
+            <img src="../assets/certifications/DASKM_ISO_9001_2015.jpg"
+                 alt="ISO 9001:2015 Quality Management System Certificate"
+                 draggable="false" />
+            <div class="cert-thumb-overlay"></div>
+          </div>
+          <div class="p-4">
+            <div class="flex items-center gap-2 mb-1.5">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-semibold bg-accent/10 text-accent">ISO</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-content leading-snug">ISO 9001:2015</h3>
+          </div>
+        </div>
+
+        <!-- GST Registration -->
+        <div class="cert-card" role="button" tabindex="0" aria-label="View GST Registration Certificate" data-cert-index="1">
+          <div class="cert-thumb-wrap">
+            <img src="../assets/certifications/DASKM_GST01.jpg"
+                 alt="GST Registration Certificate"
+                 draggable="false" />
+            <div class="cert-thumb-overlay"></div>
+          </div>
+          <div class="p-4">
+            <div class="flex items-center gap-2 mb-1.5">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-semibold bg-accent/10 text-accent">GST</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-content leading-snug">GST Registration</h3>
+          </div>
+        </div>
+
+        <!-- UDYAM Registration -->
+        <div class="cert-card" role="button" tabindex="0" aria-label="View UDYAM Registration Certificate" data-cert-index="2">
+          <div class="cert-thumb-wrap">
+            <img src="../assets/certifications/DASKM_UDYAM1.jpg"
+                 alt="UDYAM MSME Registration Certificate"
+                 draggable="false" />
+            <div class="cert-thumb-overlay"></div>
+          </div>
+          <div class="p-4">
+            <div class="flex items-center gap-2 mb-1.5">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-semibold bg-accent/10 text-accent">MSME</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-content leading-snug">UDYAM Registration</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="mt-14 text-center text-sm text-muted">
+        Certificates are displayed for verification purposes only and are the property of DAKSM Engineering Industries Pvt Ltd.
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="py-10 bg-surface border-t border-border" aria-label="Footer">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg bg-accent flex items-center justify-center" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="font-display font-bold text-sm text-content">DAKSM Engineering Industries Pvt Ltd</span>
+      </div>
+      <nav class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted" aria-label="Footer navigation">
+        <a href="../products/" class="hover:text-accent transition-colors">Products</a>
+        <a href="../index.html#about" class="hover:text-accent transition-colors">About</a>
+        <a href="./" class="hover:text-accent transition-colors">Quality</a>
+        <a href="../gallery/" class="hover:text-accent transition-colors">Gallery</a>
+        <a href="../clients/" class="hover:text-accent transition-colors">Clients</a>
+        <a href="../index.html#contact" class="hover:text-accent transition-colors">Contact</a>
+      </nav>
+      <p class="text-xs text-muted">
+        &copy; <span id="footer-year"></span> DAKSM Engineering Industries Pvt Ltd.
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     LIGHTBOX OVERLAY
+     ============================================================ -->
+<div id="cert-lightbox" class="cert-lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer" aria-hidden="true">
+  <div class="cert-lightbox-inner">
+
+    <!-- Close -->
+    <button class="cert-lightbox-close" id="lb-close" aria-label="Close">
+      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <!-- Prev -->
+    <button class="cert-lightbox-btn btn-prev" id="lb-prev" aria-label="Previous certificate">
+      <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+
+    <!-- Image -->
+    <div class="cert-lightbox-img-wrap">
+      <img id="lb-img" src="" alt="" draggable="false" />
+      <div class="cert-lightbox-img-overlay"></div>
+    </div>
+
+    <!-- Next -->
+    <button class="cert-lightbox-btn btn-next" id="lb-next" aria-label="Next certificate">
+      <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+
+    <!-- Caption -->
+    <div class="cert-lightbox-caption" id="lb-caption" aria-live="polite"></div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+     WHATSAPP FAB
+     ============================================================ -->
+<a id="whatsapp-fab"
+   href="https://wa.me/9821031129?text=Hello%20DAKSM%2C%20I%27d%20like%20to%20enquire%20about%20your%20industrial%20valve%20products."
+   target="_blank"
+   rel="noopener noreferrer"
+   class="whatsapp-fab"
+   aria-label="Chat with DAKSM on WhatsApp">
+  <span class="whatsapp-fab-icon" aria-hidden="true">
+    <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.940 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </span>
+  <span class="whatsapp-fab-label">Chat with us</span>
+</a>
+
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Theme ── */
+  var STORAGE_KEY = 'daksm-theme';
+  var html = document.documentElement;
+  var saved = localStorage.getItem(STORAGE_KEY);
+  var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  var theme = saved || system;
+  if (theme === 'dark') { html.classList.add('dark'); }
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn) {
+    btn.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+  });
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var isDark = html.classList.toggle('dark');
+      var next = isDark ? 'dark' : 'light';
+      localStorage.setItem(STORAGE_KEY, next);
+      document.querySelectorAll('[data-theme-toggle]').forEach(function(b) {
+        b.setAttribute('aria-checked', isDark ? 'true' : 'false');
+      });
+    });
+  });
+
+  /* ── Navbar scroll ── */
+  var navbar = document.getElementById('navbar');
+  if (navbar) {
+    window.addEventListener('scroll', function () {
+      navbar.classList.toggle('is-scrolled', window.scrollY > 60);
+    }, { passive: true });
+  }
+
+  /* ── Mobile menu ── */
+  var menuBtn = document.getElementById('mobile-menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function () {
+      var isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      var iconMenu = menuBtn.querySelector('.icon-menu');
+      var iconClose = menuBtn.querySelector('.icon-close');
+      if (iconMenu && iconClose) {
+        iconMenu.classList.toggle('hidden', !isOpen);
+        iconClose.classList.toggle('hidden', isOpen);
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* ── Footer year ── */
+  var fyEl = document.getElementById('footer-year');
+  if (fyEl) { fyEl.textContent = new Date().getFullYear(); }
+
+  /* ── Certificate data ── */
+  var CERTS = [
+    {
+      src: '../assets/certifications/DASKM_ISO_9001_2015.jpg',
+      alt: 'ISO 9001:2015 Quality Management System Certificate',
+      caption: 'ISO 9001:2015 — Quality Management System',
+    },
+    {
+      src: '../assets/certifications/DASKM_GST01.jpg',
+      alt: 'GST Registration Certificate',
+      caption: 'GST Registration Certificate',
+    },
+    {
+      src: '../assets/certifications/DASKM_UDYAM1.jpg',
+      alt: 'UDYAM MSME Registration Certificate',
+      caption: 'UDYAM Registration — Ministry of MSME, Govt. of India',
+    },
+  ];
+
+  /* ── Prevent right-click download on entire page ── */
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target.tagName === 'IMG' || e.target.closest('.cert-thumb-wrap, .cert-lightbox-img-wrap')) {
+      e.preventDefault();
+    }
+  });
+  /* Block Ctrl+S / Cmd+S ── */
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      e.preventDefault();
+    }
+  });
+
+  /* ── Lightbox ── */
+  var lightbox   = document.getElementById('cert-lightbox');
+  var lbImg      = document.getElementById('lb-img');
+  var lbCaption  = document.getElementById('lb-caption');
+  var lbClose    = document.getElementById('lb-close');
+  var lbPrev     = document.getElementById('lb-prev');
+  var lbNext     = document.getElementById('lb-next');
+  var currentIdx = 0;
+
+  function openLightbox(idx) {
+    currentIdx = idx;
+    showCert(currentIdx);
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+
+  function showCert(idx) {
+    var cert = CERTS[idx];
+    lbImg.src = cert.src;
+    lbImg.alt = cert.alt;
+    lbCaption.textContent = cert.caption + ' (' + (idx + 1) + ' / ' + CERTS.length + ')';
+    lbPrev.style.display = CERTS.length > 1 ? '' : 'none';
+    lbNext.style.display = CERTS.length > 1 ? '' : 'none';
+  }
+
+  /* Card click */
+  document.querySelectorAll('.cert-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      openLightbox(parseInt(card.dataset.certIndex, 10));
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(parseInt(card.dataset.certIndex, 10));
+      }
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+
+  lbPrev.addEventListener('click', function () {
+    currentIdx = (currentIdx - 1 + CERTS.length) % CERTS.length;
+    showCert(currentIdx);
+  });
+
+  lbNext.addEventListener('click', function () {
+    currentIdx = (currentIdx + 1) % CERTS.length;
+    showCert(currentIdx);
+  });
+
+  /* Close on backdrop click */
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) { closeLightbox(); }
+  });
+
+  /* Keyboard nav */
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape')      { closeLightbox(); }
+    if (e.key === 'ArrowLeft')   { currentIdx = (currentIdx - 1 + CERTS.length) % CERTS.length; showCert(currentIdx); }
+    if (e.key === 'ArrowRight')  { currentIdx = (currentIdx + 1) % CERTS.length; showCert(currentIdx); }
+  });
+
+})();
+</script>
+
+</body>
+</html>
