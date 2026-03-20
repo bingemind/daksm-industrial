@@ -27,16 +27,16 @@
 
 :root {
   /* --- Backgrounds --- */
-  --color-bg-primary:      #FFFFFF;
-  --color-bg-secondary:    #F0F4F8;
-  --color-bg-tertiary:     #E2E8F0;
+  --color-bg-primary:      #FDFBF7;
+  --color-bg-secondary:    #F5F0E8;
+  --color-bg-tertiary:     #EBE4D8;
 
   /* --- Accent: Tech Blue ---
      RGB split enables opacity modifiers e.g. rgba(var(--color-accent-rgb), 0.1) */
   --color-accent:          #0056B3;
   --color-accent-rgb:      0, 86, 179;
   --color-accent-hover:    #003D7A;
-  --color-bg-constant:      #FFFFFF;
+  --color-bg-constant:      #FDFBF7;
 
   /* --- Typography --- */
   --color-text-primary:    #1A202C;
@@ -44,27 +44,27 @@
   --color-text-muted:      #718096;
 
   /* --- Borders --- */
-  --color-border:          #CBD5E0;
-  --color-border-subtle:   #E2E8F0;
+  --color-border:          #D4C9B8;
+  --color-border-subtle:   #E5DDD0;
 
   /* --- Navigation --- */
-  --nav-bg:                rgba(255, 255, 255, 0.82);
-  --nav-bg-scrolled:       rgba(255, 255, 255, 0.97);
+  --nav-bg:                rgba(253, 251, 247, 0.82);
+  --nav-bg-scrolled:       rgba(253, 251, 247, 0.97);
   --nav-shadow:            0 1px 0 rgba(0, 0, 0, 0.07);
 
   /* --- Hero --- */
   --hero-image-url:        url('../public/images/hero.png');
   --hero-overlay:          linear-gradient(
                              105deg,
-                             rgba(255, 255, 255, 0.97) 0%,
-                             rgba(255, 255, 255, 0.90) 40%,
-                             rgba(255, 255, 255, 0.75) 65%,
-                             rgba(255, 255, 255, 0.60) 100%
+                             rgba(253, 251, 247, 0.97) 0%,
+                             rgba(253, 251, 247, 0.90) 40%,
+                             rgba(253, 251, 247, 0.75) 65%,
+                             rgba(253, 251, 247, 0.60) 100%
                            );
   --hero-text-shadow:      none;
 
   /* --- Toggle --- */
-  --toggle-track-bg:       #E2E8F0;
+  --toggle-track-bg:       #EBE4D8;
   --toggle-thumb-icon:     #0056B3;
 
   /* --- Elevation Shadows --- */
@@ -90,14 +90,14 @@
 
 .dark {
   /* --- Backgrounds --- */
-  --color-bg-primary:      #0D1117;
-  --color-bg-secondary:    #161B22;
-  --color-bg-tertiary:     #21262D;
+  --color-bg-primary:      #131210;
+  --color-bg-secondary:    #1B1916;
+  --color-bg-tertiary:     #25221E;
 
-  /* --- Accent: Safety Orange --- */
-  --color-accent:          #FF6B00;
-  --color-accent-rgb:      255, 107, 0;
-  --color-accent-hover:    #E55A00;
+  /* --- Accent: Safety Orange (muted) --- */
+  --color-accent:          #D45A00;
+  --color-accent-rgb:      212, 90, 0;
+  --color-accent-hover:    #B84E00;
 
   /* --- Typography --- */
   --color-text-primary:    #F0F6FC;
@@ -105,12 +105,12 @@
   --color-text-muted:      #6E7681;
 
   /* --- Borders --- */
-  --color-border:          #30363D;
-  --color-border-subtle:   #21262D;
+  --color-border:          #332E28;
+  --color-border-subtle:   #25221E;
 
   /* --- Navigation --- */
-  --nav-bg:                rgba(13, 17, 23, 0.82);
-  --nav-bg-scrolled:       rgba(13, 17, 23, 0.97);
+  --nav-bg:                rgba(19, 18, 16, 0.82);
+  --nav-bg-scrolled:       rgba(19, 18, 16, 0.97);
   --nav-shadow:            0 1px 0 rgba(255, 255, 255, 0.05);
 
   /* --- Hero ---
@@ -118,15 +118,15 @@
   --hero-image-url:        url('../public/images/hero.png');
   --hero-overlay:          linear-gradient(
                              105deg,
-                             rgba(13, 17, 23, 0.97) 0%,
-                             rgba(13, 17, 23, 0.90) 40%,
-                             rgba(13, 17, 23, 0.75) 65%,
-                             rgba(13, 17, 23, 0.60) 100%
+                             rgba(19, 18, 16, 0.97) 0%,
+                             rgba(19, 18, 16, 0.90) 40%,
+                             rgba(19, 18, 16, 0.75) 65%,
+                             rgba(19, 18, 16, 0.60) 100%
                            );
   --hero-text-shadow:      0 2px 20px rgba(0, 0, 0, 0.55);
 
   /* --- Toggle --- */
-  --toggle-track-bg:       #30363D;
+  --toggle-track-bg:       #332E28;
   --toggle-thumb-icon:     #FF6B00;
 
   /* --- Elevation Shadows --- */
@@ -182,6 +182,20 @@ body {
   transition: background var(--transition-base),
               border-color var(--transition-base),
               box-shadow var(--transition-base);
+}
+
+/* Navbar logo badge — keeps original brand colors intact on dark backgrounds */
+.navbar-logo {
+  border-radius: 0.75rem;
+  background: transparent;
+  transition: box-shadow var(--transition-base), background var(--transition-base);
+}
+
+.dark .navbar-logo {
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  padding: 4px 8px;
+  box-sizing: content-box;
 }
 
 #navbar.is-scrolled {
