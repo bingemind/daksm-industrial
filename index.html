@@ -477,54 +477,44 @@
 
         </div><!-- / LEFT column -->
 
-        <!-- ── RIGHT: Product showcase image ── -->
-        <div class="hidden lg:flex items-center justify-center will-animate"
-             style="animation-delay: 0.30s">
-          <div class="relative w-full max-w-lg">
+        <!-- ── RIGHT: Stacked product showcase ── -->
+        <div class="hidden lg:flex items-center justify-center">
+          <div class="relative w-full max-w-lg" style="height: 460px;">
 
-            <!-- Decorative rotated frame behind the image -->
-            <div class="absolute -inset-3 rounded-3xl border-2 border-accent/25 rotate-2"
-                 aria-hidden="true"></div>
-
-            <!-- Main product image -->
-            <img
-              src="public/images/hero2.png"
-              alt="Industrial valve — detailed engineering cross-section"
-              class="relative w-full rounded-2xl object-cover shadow-2xl -rotate-1
-                     transition-transform duration-500 hover:rotate-0 hover:scale-[1.02]"
-            />
-
-            <!-- Floating badge: Pressure Class -->
-            <div class="absolute -bottom-5 -left-5 px-4 py-3 rounded-xl
-                        bg-surface border border-border shadow-lg"
-                 aria-hidden="true">
-         <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-0.5">
-                Pressure Class
-              </div>
-         <div class="font-display font-black text-base text-content leading-none">
-                Up to Class <span class="text-accent">2500</span>
-              </div> 
+            <!-- Card 1 (back-most) — Gate Valve -->
+            <div class="hero-stack-card absolute rounded-2xl bg-white shadow-2xl overflow-hidden"
+                 style="width: 330px; height: 330px; top: 0; left: 0; transform: rotate(-6deg); z-index: 1; animation-delay: 0s;">
+              <img src="public/images/products/gate-valve.jpg"
+                   alt="Gate Valve" class="w-full h-full object-contain p-4" />
             </div>
 
-            <!-- Floating badge: API cert -->
-            <div class="absolute -top-5 -right-5 w-20 h-20 rounded-2xl bg-accent
-                        flex flex-col items-center justify-center shadow-xl"
-                 aria-hidden="true">
-              <span class="text-white font-display font-black text-lg leading-none">API</span>
-              <span class="text-white/75 font-mono text-xs mt-0.5">6D</span>
+            <!-- Card 2 — Butterfly Valve -->
+            <div class="hero-stack-card absolute rounded-2xl bg-white shadow-2xl overflow-hidden"
+                 style="width: 330px; height: 330px; top: -10px; left: 50px; transform: rotate(-3deg); z-index: 2; animation-delay: 1s;">
+              <img src="public/images/products/butterfly-valve.jpg"
+                   alt="Butterfly Valve" class="w-full h-full object-contain p-4" />
             </div>
 
-            <!-- Floating badge: NPS range -->
-            <!-- <div class="absolute top-4 -left-6 px-3 py-2 rounded-lg
-                        bg-surface border border-border shadow-md"
-                 aria-hidden="true">
-              <div class="text-[10px] font-mono text-muted uppercase tracking-wider mb-0.5">
-                NPS Range
-              </div>
-              <div class="font-display font-bold text-sm text-content leading-none">
-                ½" – <span class="text-accent">24"</span>
-              </div>
-            </div> -->
+            <!-- Card 3 — Globe Valve -->
+            <div class="hero-stack-card absolute rounded-2xl bg-white shadow-2xl overflow-hidden"
+                 style="width: 330px; height: 330px; top: 20px; left: 100px; transform: rotate(1deg); z-index: 3; animation-delay: 2s;">
+              <img src="public/images/products/globe-valve.jpg"
+                   alt="Globe Valve" class="w-full h-full object-contain p-4" />
+            </div>
+
+            <!-- Card 4 — Plug Valve -->
+            <div class="hero-stack-card absolute rounded-2xl bg-white shadow-2xl overflow-hidden"
+                 style="width: 330px; height: 330px; top: 10px; left: 150px; transform: rotate(3deg); z-index: 4; animation-delay: 3s;">
+              <img src="public/images/products/plug-valve.png"
+                   alt="Plug Valve" class="w-full h-full object-contain p-4" />
+            </div>
+
+            <!-- Card 5 (front-most) — Ball Valve -->
+            <div class="hero-stack-card absolute rounded-2xl bg-white shadow-2xl overflow-hidden"
+                 style="width: 352px; height: 352px; top: 50px; left: 80px; transform: rotate(-1deg); z-index: 5; animation-delay: 4s;">
+              <img src="public/images/products/ball-valve.png"
+                   alt="Ball Valve — Best Seller" class="w-full h-full object-contain p-4" />
+            </div>
 
           </div>
         </div><!-- / RIGHT column -->
