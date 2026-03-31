@@ -484,7 +484,7 @@ body {
 
 @media (min-width: 1280px) {  /* xl */
   .site-container {
-    max-width: 80%;
+    max-width: 90%;
   }
 }
 
