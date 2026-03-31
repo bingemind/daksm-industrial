@@ -470,10 +470,32 @@ body {
 
 
 /* ================================================================
-   8. ANIMATIONS
+   8. SITE CONTAINER
+   Single control point for max-width across all pages.
+   Change the percentage below to adjust desktop layout width.
+================================================================= */
+
+.site-container {
+  width: 100%;
+  max-width: 80rem; /* 1280px — same as Tailwind max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1280px) {  /* xl */
+  .site-container {
+    max-width: 80%;
+  }
+}
+
+
+/* ================================================================
+   9. ANIMATIONS
    Defined here for CDN usage. The tailwind.config.js keyframes
    apply only during the CLI production build.
 ================================================================= */
+
+/* (Sections 10+ renumbered — 10: Scrollbar, 11: WhatsApp, 12: Certs, etc.) */
 
 /* Hero stacked product cards — each card fades + slides in with staggered delay */
 @keyframes heroStackIn {
